@@ -1,0 +1,104 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// _SITE-SETTINGS.SCSS
+//
+//  Declare all vars here
+//
+// 1. BROWSER SUPPORT
+// 2. TYPOGRAPHY
+// 3. COLOR
+// 4. SUSY GRID
+// 5. Z-INDEX STACK
+// 6. PATHS
+// 7. SPRITE
+// 8. BREAKPOINTS
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+// =============================================================================
+// 1. BROWSER SUPPORT
+// =============================================================================
+
+// Configure the compass default browser support matrix
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: true;
+$legacy-support-for-ie8: true;
+
+// Support for svg in experimental css3 properties
+$experimental-support-for-svg: false;
+
+// =============================================================================
+// 2. TYPOGRAPHY
+// =============================================================================
+
+// 2.1. Font stacks
+//------------------------------------------------------------------------------
+
+$georgia:           Georgia, Cambria, Times New Roman, Times, sans-serif;
+$cambria:           Cambria, Georgia, Times New Roman, Times, sans-serif;
+$helvetica:         'Helvetica Neue', Helvetica, Arial, sans-serif;
+$monospace:         Monaco, Courier New, monospace;
+$ampersand:         Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
+$verdana:           Verdana, Geneva, sans-serif;
+$lucida-grande:     'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+
+// 2.2. Vertical rhythm
+//------------------------------------------------------------------------------
+
+$base-font-size:    18px;
+$base-line-height:  1.5;
+
+// Assign our `$base-line-height` to a new spacing var for more transparency.
+$base-spacing-unit: 1em;
+$half-spacing-unit: 0.5em;
+
+// 2.3. Font-sizes
+//------------------------------------------------------------------------------
+
+// These handle massive type
+$giga-size:         5em;
+$mega-size:         4em;
+$kilo-size:         3em;
+
+// Define headings here
+$h1-size:           2.6666em;
+$h2-size:           1.75em;
+$h3-size:           1.5em;
+$h4-size:           1.25em;
+$h5-size:           1.1em;
+$h6-size:           1em;
+
+// Smaller-than-body-copy sizes here
+$milli-size:        $base-font-size/1.25;
+$micro-size:        $base-font-size/1.5;
+
+// =============================================================================
+// 3. COLOR
+// =============================================================================
+$white: #fff;
+$black: #000;
+$bg-color: $white;
+$font-color: #321321;
+$headings-color: #000;
+$dropcap-color: #999;
+$border-color: Silver;
+$link-color: DodgerBlue; // blue
+$link-color-hover: FireBrick; // red
+$link-color-active: ForestGreen; // green
+$link-color-visited: Indigo;
+
+// =============================================================================
+// 4. SUSY GRID
+// =============================================================================
+$total-columns:     3;
+$container-width:   48em;
+// $column-width:      19%;
+$gutter-width:      1em;
+$grid-padding:      1em;
+
+// =============================================================================
+// 4. BREAKPOINTS
+// =============================================================================
+$bp1: 32em;
+$bp2: 40em;

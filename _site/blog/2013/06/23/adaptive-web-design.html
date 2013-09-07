@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<title>Adaptive Web Design @ Diezjietal &#x272D; Gregory Van Looy</title>
+	<meta name="description" content="Diezjietal is a freelance web designer and front-end developer">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="cleartype" content="on">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="freelance, front-end dev, webdesigner, web designer, Wordpress, HTML5, CSS3, jQuery, Belgium, responsive, adaptive">
+	<link rel="stylesheet" href="/css/main.css">
+	<script src="/js/src/modernizr.min.js"></script>
+</head>
+<body itemscope itemtype="http://schema.org/Blog" class="blog">
+<header class="page-header" role="banner">
+	<div class="container">
+		<h1><a href="/" id="top" title="Back to Diezjietal's homepage">D<span>ie</span>zj<span>ie</span>t<span>a</span>l</a></h1>
+		<nav class="nav" role="navigation">
+	<ul>
+		<!-- <li><a href="/">Home</a></li> -->
+		<li aria-selected="false" ><a href="/projects">Projects</a></li>
+		<li class="last current" aria-selected="true"><a href="/blog">Blog</a></li>
+	</ul>
+</nav>
+	</div>
+</header>
+	<div class="primary" role="main">
+		<div class="container">
+			<article class="article--full" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+	<div class="article__meta">
+		<time datetime="2013-06-23" itemprop="datePublished">
+			June 23, 2013
+		</time>
+	</div>
+	<h1 itemprop="name">Adaptive Web Design</h1>
+	<figure>
+		<img src="/img/adaptive.jpg" alt="Adaptive Web Design Banner">
+		<figcaption>image credits to <a href="http://veerle.duoh.com">Veerle's blog</a> and <a href="http://easy-readers.net/contests/i-love-adaptive-web-design/">Easy Readers</a></figcaption>
+	</figure>
+	<div class="article__body" itemprop="description articleBody">
+		<div class="intro">
+		<p>In december 2011 I had the privilege to attend a workshop on <a href="http://easy-readers.net/books/adaptive-web-design/">Adaptive Web Design</a> by the brilliant <a href="http://twitter.com/AaronGustafson ">@AaronGustafson</a>. The book is awesome, the hands-on workshop even more. Aaron shares some of his most valuable secrets and techniques in what I immediately believed was the only good way to build websites.</p></div>
+		<h2>What?</h2>
+		<p>It's the combination of <a href="http://thomasbyttebier.be/blog/responsive-web-design-is-a-pleonasm"><del>responsive</del> web design</a>, accessibility and correct JavaScript use so users can access all your content without any technological and/or physical restrictions. You've probably heard of it before, it's also known as <strong>Progressive Enhancement</strong>.</p>
+		<p>Summarized this means: Even users with (low-end) mobile devices and flakey connections, and users with physical disabilities should be able to <strong>access all your content</strong>.</p>
+		<h2>Wait. You mean Gracef&hellip;</h2>
+		<p>NO! Don't mistake this with &ldquo;Graceful Degradation&rdquo;.</p>
+		<p>Graceful Degradation is all about giving a heads up when something isn't available, e.g. the famous <code>&lt;noscript&gt;</code> tags,  while Progressive Enhancement is the opposite; giving all content to everyone and handing an improved experience to more capable devices/browsers. Huge difference.</p>
+		<h2>How?</h2>
+		<h3>With markup</h3>
+		<p>It all starts with some HTML. Simply add <code>alt=""</code> and <code>title=""</code> attributes to images and links has huge benefits in UX for people who use screen readers. Next, use semantically correct elements, like the new <code>header, nav, article</code> in HTML5. Again, screen readers will be very happy.</p>
+		<h3>With CSS</h3>
+		<p>Provide fallbacks for browsers that don't understand those fancy CSS3 gradients or rgba(). Don't rely entirely on <a href="http://modernizr.com/">Modernizr</a>, because when there's no JavaScript available, <code>.no-cssgradients { background: hotPink;}</code> won't do you any good. Instead integrate a fallback in your base code (see example). Browsers that don't understand the gradient code will skip that line and use the fallback.</p>
+		<div class="highlight"><pre><code class="css"><span class="nc">.gradient</span> <span class="p">{</span>
+  <span class="k">background</span><span class="o">:</span> <span class="m">#ff5db1</span><span class="p">;</span> <span class="c">/* fallback Old browsers */</span>
+  <span class="k">background</span><span class="o">:</span> <span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">to</span> <span class="k">bottom</span><span class="o">,</span> <span class="m">#ff5db1</span> <span class="m">0</span><span class="o">%,</span><span class="m">#ef017c</span> <span class="m">100</span><span class="o">%</span><span class="p">);</span> <span class="c">/* W3C */</span>
+<span class="p">}</span>
+		
+</code></pre></div>
+		<h3>With WAI-ARIA</h3>
+		<p><a href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a> are the W3C's guidelines for Accessible Rich Internet Applications. By adding some special attributes to your HTML elements you are once more helping screen readers. Have a look at the example below and look for <code>role=""</code> and <code>aria-xxxxx=""</code>.</p>
+		<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;widget&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;widget&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;first active&quot;</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> <span class="na">aria-selected=</span><span class="s">&quot;true&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-controls=</span><span class="s">&quot;most-read&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-1&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#most-read&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">id=</span><span class="s">&quot;tab-id-1&quot;</span><span class="nt">&gt;</span>Meest gelezen<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;last&quot;</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> <span class="na">aria-selected=</span><span class="s">&quot;false&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">aria-controls=</span><span class="s">&quot;most-shared&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-2&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#most-shared&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">id=</span><span class="s">&quot;tab-id-2&quot;</span><span class="nt">&gt;</span>Meest gedeeld<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+        <span class="c">&lt;!-- / .tablist --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-content&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane active&quot;</span> <span class="na">id=</span><span class="s">&quot;most-read&quot;</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-1&quot;</span> <span class="na">aria-expanded=</span><span class="s">&quot;true&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">&quot;custom-list&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-1&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-2&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ol&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;most-shared&quot;</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-2&quot;</span> <span class="na">aria-expanded=</span><span class="s">&quot;false&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">&quot;custom-list&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-1&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum proident tempor nulla cillum fugiat.<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-2&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum proident tempor nulla cillum fugiat.<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ol&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- / .tabcontent --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!--  .tabs --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!--  / .widget --&gt;</span>
+		
+</code></pre></div>
+		<p>Screen readers, and other assistive technologies, use this to create overviews from your content. So the user can jump to the certain sections in your content.</p>
+		<p>Changing the <code>aria-xxxxx</code> values, and <code>tabindex</code>, does require the use of JavaScript, but modern screen readers have no problem with that. If JS is not available  make sure all your tab panels are visible with CSS.</p>
+		<h3>With JavaScript</h3>
+		<p>JavaScript is hot these days and you can do some great things with it, but it can also destroy the accessibility of your content completely. So use your JavaScript wisely. Use it as an enhancement layer, not as a dependency. With the custom <code>data-xxxx=""</code> attributes we all got to use with the release of HTML5, you can hook JavaScript and still allow default behaviour for when JavaScript is not available.</p>
+		<p>Convince your (back-end) developers to create every task as a separate page. E.g. when you use <a href="http://en.wikipedia.org/wiki/Ajax_(programming)">AJAX</a> to fetch results, don't create an action that fetches those results directly from the database. Instead, in an <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC environment</a>, create a Model that fetches the results and a View to display those results and with AJAX we inject the HTML from the View into our destination. So when JS isn't available and we click the link that should have triggered the AJAX call, we still get directed to a page, our View, and see the results. A serious improvement over not seeing anything at all.</p>
+		<h2>Something to read</h2>
+		<p>If you want to learn more about Progressive Enhancement I can suggest you the following books.</p>
+			<ul>
+				<li><a href="http://easy-readers.net/books/adaptive-web-design/">Adaptive Web Design</a> by Aaron Gustafson</li>
+				<li><a href="http://filamentgroup.com/dwpe/">Designing with Progressive Enhancement</a> by filamentgroup</li>
+			</ul>
+	</div>
+</article>
+			<div class="disqus pre--1">
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dzjtl'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+	</div>
+	<footer class="page-footer" role="contentinfo">
+	<div class="container">
+		<div class="span--twothird omega pre--1">
+			&copy; 2013 <a href="/">Diezjietal GCV</a> &mdash; <a href="/atom.xml">RSS</a> &mdash; <a href="#top" class="back-to-top">&uarr; Top</a>
+		</div>
+	</div>
+</footer>
+	
+	
+<script>
+	var _gaq = _gaq || [];
+	var pluginUrl =
+	 '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+	_gaq.push(['_setDomainName', 'diezjietal.be']);
+	_gaq.push(['_setAccount', 'UA-7640477-5']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</body>
+</html>

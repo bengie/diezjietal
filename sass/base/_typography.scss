@@ -1,0 +1,28 @@
+h1 {
+	font-size: $h1-size;
+	margin-top: 2 * $base-font-size;
+	.page-header & {
+		text-transform: uppercase;
+		letter-spacing: -0.07em;
+		a {
+			color: $black;
+			text-decoration: none;
+			border-bottom: none;
+			&:focus,
+			&:hover {
+				text-decoration: none;
+				border-bottom: 1px solid $link-color;
+				color: $link-color;
+			}
+		}
+	}
+}
+
+figcaption {
+	font-size: $milli-size;
+	font-style: italic;
+}
+
+.page-footer {
+	font-family: $helvetica;
+}

@@ -1,0 +1,7 @@
+<nav class="nav" role="navigation">
+	<ul>
+		<!-- <li><a href="/">Home</a></li> -->
+		<li {% if page.url contains 'projects'%}class="current" aria-selected="true"{% else %}aria-selected="false"{% endif %} ><a href="/projects">Projects</a></li>
+		<li class="last {% if page.url contains 'blog'%}current{%endif%}" {% if page.url contains 'blog'%}aria-selected="true"{% else %}aria-selected="false"{% endif %}><a href="/blog">Blog</a></li>
+	</ul>
+</nav>

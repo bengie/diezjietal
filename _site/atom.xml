@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>Diezjietal RSS feed</title>
+ <link href="http://diezjietal.be/atom.xml" rel="self"/>
+ <link href="http://diezjietal.be/"/>
+ <updated>2013-08-14T08:55:00+02:00</updated>
+ <id>http://diezjietal.be/</id>
+ <author>
+   <name>Gregory Van Looy</name>
+   <email>greg@diezjietal.be</email>
+ </author>
+ 
+ <entry>
+   <title>Cameo in .net #245</title>
+   <link href="http://diezjietal.be/blog/2013/08/14/netmag-cameo.html"/>
+   <updated>2013-08-14T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/08/14/netmag-cameo</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-08-14&quot; itemprop=&quot;datePublished&quot;&gt;
+			August 14, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Cameo in .net #245&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+			&lt;p&gt;I'm ready for my close-up, Mr. DeMille&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;p&gt;Early July, Ian Devlin &lt;a href=&quot;http://twitter.com/iandevlin&quot;&gt; @iandevlin&lt;/a&gt;, was looking for some examples of recently launched websites built with HTML5 to be featured in the magazine's HTML5 gallery. I submitted &lt;a href=&quot;http://standaard.be&quot;&gt;de Standaard&lt;/a&gt;, a &lt;a href=&quot;/projects/2013/06/20/de-standaard.html&quot;&gt;project I worked on&lt;/a&gt;, and it got accepted. Yay, my five minutes of glory. Kudos to the talented &lt;a href=&quot;http://twitter.com/stevenbenisek&quot;&gt;@stevenbenisek&lt;/a&gt;.&lt;/p&gt;
+		&lt;figure&gt;
+			&lt;img src=&quot;/img/netmag.jpg&quot; alt=&quot;My cameo in .net&quot; itemprop=&quot;image&quot;&gt;
+		&lt;/figure&gt;
+		&lt;h2&gt;About .net&lt;/h2&gt;
+		&lt;p&gt;&lt;a href=&quot;http://www.netmagazine.com/&quot;&gt;.net&lt;/a&gt; is the world’s best-selling magazine for web designers and developers, featuring tutorials from leading agencies, interviews with the web’s biggest names, and agenda-setting features on the hottest issues affecting the internet today.&lt;/p&gt;
+	&lt;/div&gt;
+
+&lt;/article&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Mobile First with Sass</title>
+   <link href="http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass.html"/>
+   <updated>2013-06-29T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+    &lt;div class=&quot;article__meta&quot;&gt;
+        &lt;time datetime=&quot;2013-06-29&quot; itemprop=&quot;datePublished&quot;&gt;
+            June 29, 2013
+        &lt;/time&gt;
+    &lt;/div&gt;
+    &lt;h1 itemprop=&quot;name&quot;&gt;Mobile First with Sass&lt;/h1&gt;
+    &lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+        &lt;div class=&quot;intro&quot;&gt;
+            &lt;p&gt;Taking a Mobile First approach with your CSS and keeping &amp;lt;IE9 happy&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h2&gt;The philosophy&lt;/h2&gt;
+        &lt;p&gt;A Mobile First approach is starting with a basic experience for mobile devices. The well known one-column stack, and with &lt;code&gt;@media&lt;/code&gt; queries you build new layouts for every breakpoint in your design. Devices, or browsers, that don't understand &lt;code&gt;@media&lt;/code&gt; queries get the basic experience.&lt;/p&gt;
+        &lt;h2&gt;The pitfall&lt;/h2&gt;
+        &lt;p&gt;From a &lt;a href=&quot;/blog/2013/06/23/adaptive-web-design.html&quot;&gt;Progressive Enhancement point-of-view&lt;/a&gt; I find this an excellent approach. But this also means you will serve the one-column stack to those legacy desktop browsers (&amp;lt; IE9) who don't understand &lt;code&gt;@media&lt;/code&gt; queries. Unfortunately that's not something we can all get away with.&lt;/p&gt;
+        &lt;h2&gt;The solution&lt;/h2&gt;
+        &lt;p&gt;Luckily we can fix this. With the help of &lt;a href=&quot;http://sass-lang.com&quot;&gt;Sass&lt;/a&gt; and some very clever &lt;a href=&quot;http://jakearchibald.github.io/sass-ie/&quot;&gt;SassScripting by Jake Archibald&lt;/a&gt;.&lt;/p&gt;
+        &lt;p&gt;These snippets will generate a legacy stylesheet that serves the desktop layout to &amp;lt;IE9. Yay!&lt;/p&gt;
+        &lt;h2&gt;How do you start?&lt;/h2&gt;
+        &lt;ol&gt;
+            &lt;li&gt;
+                &lt;p&gt;Add conditional comments to the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of your html file.&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if lte IE 8]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;css/master-old-ie.css&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if gt IE 8]&amp;gt;&amp;lt;!--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;css/master.css&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;p&gt;Create a &lt;code&gt;.scss&lt;/code&gt; version of your legacy stylesheet. e.g. &lt;code&gt;master-old-ie.scss&lt;/code&gt; and add the following snippet.&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// the breakpoint where the desktop layout starts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;master&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// import all other scss&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+                &lt;p&gt;The next step will clarify the variables.&lt;/p&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;p&gt;Add the following to your &lt;code&gt;_mixins.scss&lt;/code&gt; file, or create a new partial, but don't forget to &lt;code&gt;@import&lt;/code&gt; it in your &lt;code&gt;master.scss&lt;/code&gt; file.&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// set a default value and override it in master-old-ie.scss&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// min-width media queries&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// if we want the media query fallback, and yes we do in our master-old-ie.scss&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// if the width value set in master-old-ie.scss is greater or equal to the width set in our mixin&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// compile the content of our mixin WITHOUT the media query&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// else compile content of mixin WITH media query&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// max-width media queries&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mq-max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// same logic as above&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;p&gt;An example&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+                &lt;p&gt;In &lt;code&gt;master.css&lt;/code&gt;, this will compile to &amp;hellip;&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;60em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+                &lt;p&gt;And in &lt;code&gt;master-old-ie.css&lt;/code&gt; this will compile to &amp;hellip;&lt;/p&gt;
+                &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+                &lt;p&gt;Okay, it's a little dirty to repeat the same property and let the cascade do the lifting but hey, it gets the job done.&lt;/p&gt;
+            &lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;h2&gt;Bonus&lt;/h2&gt;
+        &lt;p&gt;A little bonus mixin to compile CSS only for our &lt;code&gt;master-old-ie.css&lt;/code&gt; file. Use this if you don't want to pollute your CSS with hacks.&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Only use this content if we&amp;#39;re dealing with old IE&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;Add to the top of &lt;code&gt;master-old-ie.scss&lt;/code&gt;&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// BONUS: we want to include some CSS hacks only to this file&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;A little example &amp;hellip;&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// this will output/compile only in master-old-ie.scss (because we&amp;#39;ve set $old-ie: true; at top of page) and will target IE7 with the star hack&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;*display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;*zoom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;Our &lt;code&gt;master.css&lt;/code&gt; will compile to &amp;hellip;&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;&amp;hellip; and our &lt;code&gt;master-old-ie.css&lt;/code&gt; will compile to &amp;hellip;&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zoom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;h2&gt;Heads up!&lt;/h2&gt;
+        &lt;p&gt;By using this approach (media queries per selector instead of one media query per breakpoint and all your selectors in that query) this will bloat your CSS output. But by &lt;a href=&quot;https://github.com/h5bp/server-configs/blob/master/apache/README.md#gzip-components&quot;&gt;gzipping&lt;/a&gt; your files the difference will be negligible.&lt;/p&gt;
+        &lt;div class=&quot;island&quot;&gt;
+            &lt;h2&gt;Credit where credit's due&lt;/h2&gt;
+            &lt;p&gt;I don't want to take credit for this approach. All credits go to &lt;a href=&quot;http://jakearchibald.com/&quot;&gt;Jake Archibald&lt;/a&gt;. I just wanted to make a little tutorial for Sass beginners and share my workflow with others.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Microdata</title>
+   <link href="http://diezjietal.be/blog/2013/06/26/microdata.html"/>
+   <updated>2013-06-26T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/06/26/microdata</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+    &lt;div class=&quot;article__meta&quot;&gt;
+        &lt;time datetime=&quot;2013-06-26&quot; itemprop=&quot;datePublished&quot;&gt;
+            June 26, 2013
+        &lt;/time&gt;
+    &lt;/div&gt;
+    &lt;h1 itemprop=&quot;name&quot;&gt;Microdata&lt;/h1&gt;
+
+    &lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+        &lt;div class=&quot;intro&quot;&gt;
+            &lt;p&gt;Give your semantic HTML an SEO boost with microdata.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Say what? Yes, there's magic code to give your content an advantage in in all major search engines. It's called &lt;a href=&quot;http://schema.org&quot;&gt;microdata&lt;/a&gt;.&lt;/p&gt;
+        &lt;blockquote&gt;
+            &lt;p&gt;Microdata is a collection of schemas, i.e., html tags, that webmasters can use to markup their pages in ways recognized by major search providers. Search engines including Bing, Google, Yahoo! and Yandex rely on this markup to improve the display of search results, making it easier for people to find the right web pages.&lt;/p&gt;
+            &lt;span class=&quot;author&quot;&gt;source: &lt;a href=&quot;http://schema.org&quot;&gt;Schema.org&lt;/a&gt;&lt;/span&gt;
+        &lt;/blockquote&gt;
+        &lt;h2&gt;Why?&lt;/h2&gt;
+        &lt;p&gt;All your webpages have a meaning. To humans this is easy to understand. An &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; on a news site will probably be a news article with a title and body text, but on a movie site, like &lt;a href=&quot;http://imdb.com&quot;&gt;IMDB&lt;/a&gt;, this can contain a summary, info about director, genre, &amp;hellip; &lt;br&gt; Search engines have a limited understanding of what is being discussed on those pages. By adding tags and/or attributes we help search engines to understand your content.&lt;/p&gt;
+        &lt;h2&gt;An example&lt;/h2&gt;
+        &lt;p&gt;Let's start with an easy one. All our sites contain pages. So every page is a schema, a &lt;a href=&quot;http://schema.org/WebPage&quot;&gt;WebPage&lt;/a&gt;.&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemscope&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemtype=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://schema.org/WebPage&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;With &lt;code&gt;itemscope&lt;/code&gt; you specify that the entire page, or block, is about a particular item. &lt;code&gt;itemtype&lt;/code&gt; defines the block. &lt;br&gt; So far we've only told that our page is a WebPage, I'm pretty sure search engines are smart enough to know, without the &lt;strong&gt;microdata&lt;/strong&gt;, that it's a WebPage.&lt;/p&gt;
+        &lt;p&gt;It gets interesting when your start marking up certain sections in your page to give extra meaning. Let's start with a &lt;a href=&quot;http://schema.org/NewsArticle&quot;&gt;news article&lt;/a&gt;.&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemscope&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemtype=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://schema.org/NewsArticle&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;News article title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;written by &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/profile/peter-jackson/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Peter Jackson&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt; on &lt;span class=&quot;nt&quot;&gt;&amp;lt;time&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;datetime=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2013-06-10&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;datePublished&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;06/10/2013&lt;span class=&quot;nt&quot;&gt;&amp;lt;/time&amp;gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/600x300&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;image alt&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;image&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;caption here&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;article__body&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;articleBody&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, natus, tenetur explicabo consequuntur non autem cum cupiditate temporibus. Dolorem, quam.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;There's a lot more information now for search engines to index and give better search results to the user.&lt;/p&gt;
+        &lt;h3&gt;Nesting schemas&lt;/h3&gt;
+        &lt;p&gt;You can nest schemas. With the &lt;code&gt;article&lt;/code&gt; example above we nested a Movie schema in a WebPage schema. That's an easy one.&lt;/p&gt;
+        &lt;p&gt;Let's break up our &lt;code&gt;article&lt;/code&gt; example. We see the &lt;code&gt;span itemprop=&quot;author&quot;&lt;/code&gt;. It's a name of a &lt;a href=&quot;http://schema.org/Person&quot;&gt;Person&lt;/a&gt;. Now apply some more schema.&lt;/p&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemscope&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemtype=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://schema.org/Person&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/profile/peter-jackson/&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;name url&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Peter Jackson&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+        
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;Note: You can add multiple properties to one &lt;code&gt;itemprop&lt;/code&gt;.&lt;/p&gt;
+        &lt;h2&gt;In the wild&lt;/h2&gt;
+        &lt;p&gt;We applied these schemas to the new 2013 &lt;a href=&quot;http://standaard.be&quot;&gt;De Standaard&lt;/a&gt; website &lt;small&gt;( more on this &lt;a href=&quot;/projects/2013/06/20/de-standaard.html&quot;&gt;project&lt;/a&gt; )&lt;/small&gt; and only a few days after the launch multiple articles scored first-page results on &lt;a href=&quot;http://google.be&quot;&gt;Google.be&lt;/a&gt;, and they still do.&lt;/p&gt;
+        &lt;p&gt;Have a look at the source of this site or &lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;, they use microdata as well.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Adaptive Web Design</title>
+   <link href="http://diezjietal.be/blog/2013/06/23/adaptive-web-design.html"/>
+   <updated>2013-06-23T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/06/23/adaptive-web-design</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-06-23&quot; itemprop=&quot;datePublished&quot;&gt;
+			June 23, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Adaptive Web Design&lt;/h1&gt;
+	&lt;figure&gt;
+		&lt;img src=&quot;/img/adaptive.jpg&quot; alt=&quot;Adaptive Web Design Banner&quot;&gt;
+		&lt;figcaption&gt;image credits to &lt;a href=&quot;http://veerle.duoh.com&quot;&gt;Veerle's blog&lt;/a&gt; and &lt;a href=&quot;http://easy-readers.net/contests/i-love-adaptive-web-design/&quot;&gt;Easy Readers&lt;/a&gt;&lt;/figcaption&gt;
+	&lt;/figure&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+		&lt;p&gt;In december 2011 I had the privilege to attend a workshop on &lt;a href=&quot;http://easy-readers.net/books/adaptive-web-design/&quot;&gt;Adaptive Web Design&lt;/a&gt; by the brilliant &lt;a href=&quot;http://twitter.com/AaronGustafson &quot;&gt;@AaronGustafson&lt;/a&gt;. The book is awesome, the hands-on workshop even more. Aaron shares some of his most valuable secrets and techniques in what I immediately believed was the only good way to build websites.&lt;/p&gt;&lt;/div&gt;
+		&lt;h2&gt;What?&lt;/h2&gt;
+		&lt;p&gt;It's the combination of &lt;a href=&quot;http://thomasbyttebier.be/blog/responsive-web-design-is-a-pleonasm&quot;&gt;&lt;del&gt;responsive&lt;/del&gt; web design&lt;/a&gt;, accessibility and correct JavaScript use so users can access all your content without any technological and/or physical restrictions. You've probably heard of it before, it's also known as &lt;strong&gt;Progressive Enhancement&lt;/strong&gt;.&lt;/p&gt;
+		&lt;p&gt;Summarized this means: Even users with (low-end) mobile devices and flakey connections, and users with physical disabilities should be able to &lt;strong&gt;access all your content&lt;/strong&gt;.&lt;/p&gt;
+		&lt;h2&gt;Wait. You mean Gracef&amp;hellip;&lt;/h2&gt;
+		&lt;p&gt;NO! Don't mistake this with &amp;ldquo;Graceful Degradation&amp;rdquo;.&lt;/p&gt;
+		&lt;p&gt;Graceful Degradation is all about giving a heads up when something isn't available, e.g. the famous &lt;code&gt;&amp;lt;noscript&amp;gt;&lt;/code&gt; tags,  while Progressive Enhancement is the opposite; giving all content to everyone and handing an improved experience to more capable devices/browsers. Huge difference.&lt;/p&gt;
+		&lt;h2&gt;How?&lt;/h2&gt;
+		&lt;h3&gt;With markup&lt;/h3&gt;
+		&lt;p&gt;It all starts with some HTML. Simply add &lt;code&gt;alt=&quot;&quot;&lt;/code&gt; and &lt;code&gt;title=&quot;&quot;&lt;/code&gt; attributes to images and links has huge benefits in UX for people who use screen readers. Next, use semantically correct elements, like the new &lt;code&gt;header, nav, article&lt;/code&gt; in HTML5. Again, screen readers will be very happy.&lt;/p&gt;
+		&lt;h3&gt;With CSS&lt;/h3&gt;
+		&lt;p&gt;Provide fallbacks for browsers that don't understand those fancy CSS3 gradients or rgba(). Don't rely entirely on &lt;a href=&quot;http://modernizr.com/&quot;&gt;Modernizr&lt;/a&gt;, because when there's no JavaScript available, &lt;code&gt;.no-cssgradients { background: hotPink;}&lt;/code&gt; won't do you any good. Instead integrate a fallback in your base code (see example). Browsers that don't understand the gradient code will skip that line and use the fallback.&lt;/p&gt;
+		&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.gradient&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#ff5db1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/* fallback Old browsers */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#ff5db1&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;#ef017c&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/* W3C */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+		&lt;h3&gt;With WAI-ARIA&lt;/h3&gt;
+		&lt;p&gt;&lt;a href=&quot;http://www.w3.org/TR/wai-aria/&quot;&gt;WAI-ARIA&lt;/a&gt; are the W3C's guidelines for Accessible Rich Internet Applications. By adding some special attributes to your HTML elements you are once more helping screen readers. Have a look at the example below and look for &lt;code&gt;role=&quot;&quot;&lt;/code&gt; and &lt;code&gt;aria-xxxxx=&quot;&quot;&lt;/code&gt;.&lt;/p&gt;
+		&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;widget&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tabs&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;widget&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;nav nav-tabs&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tablist&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;first active&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;tabindex=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-controls=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;most-read&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#most-read&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;presentation&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;tabindex=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Meest gelezen&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;last&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;tabindex=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-controls=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;most-shared&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-2&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#most-shared&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;presentation&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;tabindex=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-2&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Meest gedeeld&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- / .tablist --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-content&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-pane active&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;most-read&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tabpanel&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-1&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;custom-list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;list__item-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;list__item-2&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-pane&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;most-shared&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tabpanel&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tab-id-2&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;custom-list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;list__item-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum proident tempor nulla cillum fugiat.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;list__item-2&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum proident tempor nulla cillum fugiat.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- / .tabcontent --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--  .tabs --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  / .widget --&amp;gt;&lt;/span&gt;
+		
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+		&lt;p&gt;Screen readers, and other assistive technologies, use this to create overviews from your content. So the user can jump to the certain sections in your content.&lt;/p&gt;
+		&lt;p&gt;Changing the &lt;code&gt;aria-xxxxx&lt;/code&gt; values, and &lt;code&gt;tabindex&lt;/code&gt;, does require the use of JavaScript, but modern screen readers have no problem with that. If JS is not available  make sure all your tab panels are visible with CSS.&lt;/p&gt;
+		&lt;h3&gt;With JavaScript&lt;/h3&gt;
+		&lt;p&gt;JavaScript is hot these days and you can do some great things with it, but it can also destroy the accessibility of your content completely. So use your JavaScript wisely. Use it as an enhancement layer, not as a dependency. With the custom &lt;code&gt;data-xxxx=&quot;&quot;&lt;/code&gt; attributes we all got to use with the release of HTML5, you can hook JavaScript and still allow default behaviour for when JavaScript is not available.&lt;/p&gt;
+		&lt;p&gt;Convince your (back-end) developers to create every task as a separate page. E.g. when you use &lt;a href=&quot;http://en.wikipedia.org/wiki/Ajax_(programming)&quot;&gt;AJAX&lt;/a&gt; to fetch results, don't create an action that fetches those results directly from the database. Instead, in an &lt;a href=&quot;http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;MVC environment&lt;/a&gt;, create a Model that fetches the results and a View to display those results and with AJAX we inject the HTML from the View into our destination. So when JS isn't available and we click the link that should have triggered the AJAX call, we still get directed to a page, our View, and see the results. A serious improvement over not seeing anything at all.&lt;/p&gt;
+		&lt;h2&gt;Something to read&lt;/h2&gt;
+		&lt;p&gt;If you want to learn more about Progressive Enhancement I can suggest you the following books.&lt;/p&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href=&quot;http://easy-readers.net/books/adaptive-web-design/&quot;&gt;Adaptive Web Design&lt;/a&gt; by Aaron Gustafson&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;http://filamentgroup.com/dwpe/&quot;&gt;Designing with Progressive Enhancement&lt;/a&gt; by filamentgroup&lt;/li&gt;
+			&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Grunt JS</title>
+   <link href="http://diezjietal.be/blog/2013/06/21/grunt.html"/>
+   <updated>2013-06-21T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/06/21/grunt</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-06-21&quot; itemprop=&quot;datePublished&quot;&gt;
+			June 21, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Grunt JS&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;h2&gt;What is Grunt&lt;/h2&gt;
+		&lt;p&gt;&lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; is a JavaScript Task Runner. &lt;br&gt; That's it. Thank you for reading my first blog post.&lt;/p&gt;
+		&lt;h2&gt;The real deal&lt;/h2&gt;
+		&lt;p&gt;&lt;strong&gt;Grunt&lt;/strong&gt; is designed to make your front-end development workflow a lot easier. Let's make this more clear with an example.&lt;/p&gt;
+		&lt;p&gt;While working on the &lt;a href=&quot;http://standaard.be&quot;&gt;De Standaard&lt;/a&gt;, read more about this &lt;a href=&quot;/projects/2013/06/20/de-standaard.html&quot;&gt;project&lt;/a&gt;, we used various tools for building the templates.&lt;/p&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; (static site generator)&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://sass-lang.com&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://compass-style.org&quot;&gt;Compass&lt;/a&gt; (CSS pre-compilers)&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://requirejs.org&quot;&gt;RequireJS&lt;/a&gt; (JavaScript Module loader) and a build script&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://blesscss.com/&quot;&gt;BlessCSS&lt;/a&gt; (CSS splitter)&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;p&gt;That made a total of 3 Terminal windows (Command Line Interface) watching for code changes on CSS and HTML , 1 RequireJS Build command in &lt;a href=&quot;http://www.sublimetext.com/&quot;&gt;Sublime Text 2&lt;/a&gt; and 4 manual commands in the BlessCSS Teminal windows. Quite the burden when you need to do just a few simple changes to the source code. That's when &lt;a href=&quot;http://twitter.com/stevenbenisek&quot;&gt;@stevenbenisek&lt;/a&gt; had the wonderful idea to introduce &lt;strong&gt;Grunt&lt;/strong&gt; in our workflow. With a &lt;a href=&quot;http://gruntjs.com/plugins&quot;&gt;Grunt plugin&lt;/a&gt; for each of our tools this could all run in just one Terminal window and not one single manual interaction is required, except the initial &lt;code&gt;$ grunt&lt;/code&gt; command at the start of your working day.&lt;/p&gt;
+		&lt;h2&gt;Getting started?!&lt;/h2&gt;
+		&lt;p&gt;Read the &lt;a href=&quot;http://gruntjs.com/getting-started&quot;&gt;Getting started guide on the Grunt website&lt;/a&gt; it has some good step-by-step instructions.&lt;/p&gt;
+		&lt;p&gt;Basically it comes down to creating a &lt;code&gt;Gruntfile.js&lt;/code&gt; file (with the tasks) and a &lt;code&gt;package.json&lt;/code&gt; (with meta information). Here's &lt;a href=&quot;http://gruntjs.com/sample-gruntfile&quot;&gt;an example&lt;/a&gt;&lt;/p&gt;
+
+		&lt;h2&gt;Taking it a step further&lt;/h2&gt;
+		&lt;p&gt;There are some crazy &lt;a href=&quot;http://gruntjs.com/plugins&quot;&gt;Grunt plugins&lt;/a&gt; out there that can do a lot of heavy front-end lifting for you. There's this &lt;a href=&quot;https://npmjs.org/package/grunt-ftp-deploy&quot;&gt;FTP deploy plugin&lt;/a&gt; that you could use to automatically upload any changes to your code to the remote (production) server. Handy if your editor/IDE doesn't support &quot;publish to FTP on save&quot;. Browse through the repository to find the ones you need.&lt;/p&gt;
+		&lt;p&gt;Another step is automating the creation of your &lt;code&gt;Gruntfile.js&lt;/code&gt;. If you find yourself repeating the same process over and over again when you start a new project than maybe it's time to take a look at &lt;a href=&quot;http://yeoman.io/&quot;&gt;Yeoman.io&lt;/a&gt;. Lately I start projects the same way. Building a static site with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; for HTML templates, adding &lt;a href=&quot;http://sass-lang.com&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://compass-style.org&quot;&gt;Compass&lt;/a&gt; and configuring my &lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; settings. With &lt;strong&gt;Yeoman&lt;/strong&gt; you can automate this workflow. More about this in a future blog post.&lt;/p&gt;
+		&lt;div class=&quot;island&quot;&gt;
+			&lt;p&gt;&lt;em&gt;Edit:&lt;/em&gt; Apparently &lt;a href=&quot;http://twitter.com/wolfr_&quot;&gt;@wolfr_&lt;/a&gt; wrote a &lt;a href=&quot;http://wolfslittlestore.be/2013/05/grunt-jshappy-plan/&quot;&gt;blog post&lt;/a&gt; about &lt;a href=&quot;https://github.com/happyplan/happyplan&quot;&gt;Happy Plan&lt;/a&gt;, a static file generator using jekyll, compass, fontcustom and grunt. One step closer to an automated workflow.&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>De Standaard</title>
+   <link href="http://diezjietal.be/projects/2013/06/20/de-standaard.html"/>
+   <updated>2013-06-20T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/projects/2013/06/20/de-standaard</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemscope itemtype=&quot;http://schema.org/TechArticle&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-06-20&quot; itemprop=&quot;datePublished&quot;&gt;
+			June 20, 2013
+		&lt;/time&gt;
+		&lt;dl&gt;
+			&lt;dt&gt;Client:&lt;/dt&gt;
+			&lt;dd&gt;&lt;a href=&quot;http://corelio.be&quot; itemprop=&quot;publisher&quot;&gt;Corelio&lt;/a&gt;&lt;/dd&gt;
+		&lt;/dl&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;De Standaard&lt;/h1&gt;
+	&lt;figure&gt;
+		&lt;a href=&quot;http://standaard.be&quot;&gt;
+			&lt;img src=&quot;/img/destandaard.jpg&quot; alt=&quot;De Standaard&quot; title=&quot;The 2013 Redesign for De Standaard, the first responsive newspaper website in Belgium&quot; itemprop=&quot;image&quot;&gt;
+		&lt;/a&gt;
+	&lt;/figure&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+			&lt;p&gt;&amp;ldquo;Hi Gregory, do you have some spare time in January, and maybe February 2013?&lt;br&gt;
+			&amp;mdash; Yeah sure. Why?&lt;br&gt;
+			Can you help us with the front-end for the new &lt;a href=&quot;http://standaard.be&quot;&gt;De Standaard&lt;/a&gt; site?&amp;rdquo;&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;p&gt;And that's how a crazy 5 months started. &lt;a href=&quot;http://corelio.be&quot;&gt;Corelio&lt;/a&gt; wanted to launch the first responsive newspaper site in Belgium, 5 years after the famous &lt;a href=&quot;http://markboultondesign.com/&quot;&gt;Mark Boulton  redesign&lt;/a&gt;, and they asked me to help them. I was honoured, bedazzled at first. I never did a project of this scale so I was a little out of my comfort zone. After a good talk with the in-house front-end dev, &lt;a href=&quot;http://twitter.com/stevenbenisek&quot;&gt;@stevenbenisek&lt;/a&gt;, I felt at ease. We both had the same philosophy and approach for this project. Progressive enhancement, Sass, Vanilla JS, front-end performance, &amp;hellip; We wanted to make something that could serve as an example. Large scale websites don't have to be slow monsters, this one's going to blast.&lt;/p&gt;
+		&lt;h2&gt;Process&lt;/h2&gt;
+		&lt;p&gt;Our job: make static HTML templates based on the designs and ship them to the developers. &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; and &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; to the rescue. &lt;strong&gt;Jekyll&lt;/strong&gt; to make maintanable static HTML templates and &lt;strong&gt;GitHub&lt;/strong&gt; to deliver the files to all developers. It worked like a charm.&lt;/p&gt;
+		&lt;p&gt;After evaluating the designs and reading the briefs, we decided to build our own custom grid. Because gutters had to be set in fixed pixel dimensions and we couldn't use &lt;code&gt;box-sizing: border-box;&lt;/code&gt; so we had to nest a few more &lt;code&gt;div&lt;/code&gt;'s as intended. But our job is to make it work, so we did.&lt;/p&gt;
+		&lt;h3&gt;Architecture&lt;/h3&gt;
+		&lt;p&gt;Because this was a large project we had to write maintainable code. Both in HTML as in CSS. One way to do this is, is by building the site in a modular and scalable architecture. Combining what we've learned from &lt;a href=&quot;http://twitter.github.io/bootstrap/index.html&quot;&gt;Twitter Bootstrap&lt;/a&gt; (for HTML components) and &lt;a href=&quot;http://smacss.com/&quot;&gt;SMACSS&lt;/a&gt; (modular CSS) we ended up with something that's easy to use by the webmasters and any other developer, new or veteran to the project. If they need to add a certain module to a page all they have to do is to copy/paste the required HTML and add the necessary CSS classes. No need to write extra CSS with the risk of breaking something and violating the brand's identity guidelines.&lt;/p&gt;
+		&lt;p&gt;&amp;mdash; &lt;em&gt;&amp;ldquo;What's with the strange CSS classes?&amp;rdquo;&lt;/em&gt;&lt;br&gt;
+			That's &lt;a href=&quot;http://bem.info/&quot;&gt;BEM&lt;/a&gt; methodology. It makes it easier for developers to break things up in just a glance at the code. Read more about BEM: &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://nicolasgallagher.com/about-html-semantics-front-end-architecture/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+		&lt;h3&gt;Only blazing fast is acceptable!&lt;/h3&gt;
+		&lt;p&gt;The previous version of De Standaard had page loading times up to 20s. Time for some action. With the help of &lt;a href=&quot;http://requirejs.org/&quot;&gt;RequireJS&lt;/a&gt; and a few simple front-end performance boosters we reduced it to &amp;lt;2s, with &lt;strong&gt;all the news related content loading under 1s&lt;/strong&gt; and loading JS-heavy components (like advertising and carousels) asynchronously. We were able to avoid &lt;a href=&quot;http://jquery.com&quot;&gt;jQuery&lt;/a&gt; inclusion for 90% of the pages so page size is reduced and battery life on mobile devices improved.&lt;/p&gt;
+
+		&lt;h3&gt;Progressive enhancement&lt;/h3&gt;
+		&lt;p&gt;Not one user should be excluded from your site's content because of technological or physical restrictions. With &lt;a href=&quot;http://www.w3.org/TR/wai-aria/&quot;&gt;WAI ARIA&lt;/a&gt; you can improve accessibility for people with assistive technologies. Our non-JS-first approach ensures access to all content without technological restrictions. We used JavaScript as an enhancement layer not as a dependency, so all necessary tasks can be completed without JavaScript turned on.&lt;/p&gt;
+
+		&lt;h3&gt;Pleasing the Big G&lt;/h3&gt;
+		&lt;p&gt;&lt;abbr title=&quot;Search Engine Optimization&quot;&gt;SEO&lt;/abbr&gt; is important for every site but how can you improve your results? How do you please the Big G? Start with a solid and semantic HTML structure. Check! Add some magical attibutes. Wait, what? Yes, you can improve your SEO results with the aid of some simple attributes on your HTML. They call it &lt;a href=&quot;http://schema.org&quot;&gt;microdata&lt;/a&gt;. Have a look at the source code of &lt;a href=&quot;http://standaard.be&quot;&gt;De Standaard&lt;/a&gt; and search for &lt;code&gt;itemtype, itemscope, itemprop&lt;/code&gt;. Want proof? Only a few days after launch we scored several first page results for various articles on &lt;a href=&quot;http://google.be&quot;&gt;Google&lt;/a&gt;, and they still do. Check!&lt;/p&gt;
+
+		&lt;h3&gt;Styleguide&lt;/h3&gt;
+		&lt;p&gt;Don't forget your webmasters. They have to work with the site after we signed off. Give them something to work with and make it as easy as possible. Give them &lt;strong&gt;a styleguide&lt;/strong&gt;. Have a look at &lt;a href=&quot;http://twitter.github.io/bootstrap/index.html&quot;&gt;Twitter Bootstrap&lt;/a&gt; and you know what I'm talking about. You can use it as a reference during the development of the site and it's valuable documentation for any contributor to the project.&lt;/p&gt;
+
+		&lt;h3&gt;Pitfalls&lt;/h3&gt;
+		&lt;ul&gt;
+			&lt;li&gt;Working with advertising on a responsive website is a challenge. &lt;a href=&quot;http://twitter.com/stevenbenisek&quot;&gt;@stevenbenisek&lt;/a&gt; and &lt;a href=&quot;http://www.adhese.com/&quot;&gt;Adhese&lt;/a&gt; did a fantastic job in finding a new approach for serving those ads. &lt;em&gt;Edit: Adhese wrote a &lt;a href=&quot;http://adhese.prezly.com/ads-in-new-layout-standaardbe-faster-simpler-and-safer-thanks-to-adhese&quot;&gt;blog post&lt;/a&gt; about the advertising model on De Standaard.&lt;/em&gt;&lt;/li&gt;
+			&lt;li&gt;Don't forget to design your &amp;ldquo;hidden&amp;rdquo; pages (404, 500, signup pages)&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;h3&gt;Tools of the trade&lt;/h3&gt;
+		&lt;p&gt;HTML5, CSS3, JavaScript, &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://compass-style.org/&quot;&gt;Compass&lt;/a&gt;, &lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt;, &lt;a href=&quot;http://requirejs.org/&quot;&gt;RequireJS&lt;/a&gt;, &lt;a href=&quot;http://blesscss.com/&quot;&gt;BlessCSS&lt;/a&gt;.&lt;/p&gt;
+		&lt;h3&gt;Credits&lt;/h3&gt;
+		&lt;p&gt;I want to thank the entire team at Corelio DCC. Account managers, projectmanagers, team leads, analysts, back-end developers, front-end devs, webmasters, designers, &amp;hellip; they all did an amazing job. Definitely one of the best teams I ever had the chance to work with. THANK YOU for an amazing 5 months. Kudos.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/article&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sportzomer 2012</title>
+   <link href="http://diezjietal.be/projects/2012/05/02/sportzomer-2012.html"/>
+   <updated>2012-05-02T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/projects/2012/05/02/sportzomer-2012</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemscope itemtype=&quot;http://schema.org/TechArticle&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2012-05-02&quot; itemprop=&quot;datePublished&quot;&gt;
+			May 02, 2012
+		&lt;/time&gt;
+		&lt;dl&gt;
+			&lt;dt&gt;Client:&lt;/dt&gt;
+			&lt;dd&gt;&lt;a href=&quot;http://www.persgroep.be/&quot; itemprop=&quot;publisher&quot;&gt;De Persgroep&lt;/a&gt;&lt;/dd&gt;
+		&lt;/dl&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Sportzomer 2012&lt;/h1&gt;
+	&lt;figure class=&quot;span--third&quot;&gt;
+		&lt;img src=&quot;/img/sportzomer2012-1.jpg&quot; alt=&quot;EC 2012&quot; itemprop=&quot;image&quot;&gt;
+	&lt;/figure&gt;
+	&lt;div class=&quot;article__body no--pre&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+			&lt;p&gt;With the European Championship Football, the Tour de France and the Olympics, the summer of 2012 was a highlight for sports fanatics.&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;p&gt;The team from the &lt;a href=&quot;https://itunes.apple.com/be/app/hln.be-mobile/id403025567?mt=8&quot;&gt;HLN.be Mobile app&lt;/a&gt; and &lt;a href=&quot;http://hln.be&quot;&gt;HLN.be&lt;/a&gt; wanted a separate app, iOS and Android, for each event with news, calendars, results, rankings and live coverage. To speed up development they chose to build it with HTML and Java, and integrate it in the app with a webview.&lt;/p&gt;
+		&lt;h2&gt;Where did I fit in?&lt;/h2&gt;
+		&lt;p&gt;First, I was assigned with making wireframes based on the sketches and briefs. When the designs were finished I started by building a miniature framework so all three events were based on the same HTML/CSS code base. The first event, EC 2012, was done by me entirely (for HTML, CSS and some jQuery) while my little framework was send to a third-party development team where they started working on The Olympics and &lt;abbr title=&quot;Tour de France&quot;&gt;TdF&lt;/abbr&gt; app.&lt;/p&gt;
+		&lt;h3&gt;Event data&lt;/h3&gt;
+		&lt;p&gt;All event data was pulled from the &lt;a href=&quot;http://www.infostradasports.com/&quot;&gt;Infostrada API&lt;/a&gt;.&lt;/p&gt;
+		&lt;h2&gt;Tools and technologies:&lt;/h2&gt;
+		&lt;p&gt;HTML5, CSS3, jQuery, &lt;a href=&quot;http://www.axure.com/&quot;&gt;Axure&lt;/a&gt;.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/article&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Stad Antwerpen</title>
+   <link href="http://diezjietal.be/projects/2012/02/06/stad-antwerpen.html"/>
+   <updated>2012-02-06T00:00:00+01:00</updated>
+   <id>http://diezjietal.be/projects/2012/02/06/stad-antwerpen</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemscope itemtype=&quot;http://schema.org/TechArticle&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2012-02-06&quot; itemprop=&quot;datePublished&quot;&gt;
+			February 06, 2012
+		&lt;/time&gt;
+		&lt;dl&gt;
+			&lt;dt&gt;Client:&lt;/dt&gt;
+			&lt;dd&gt;&lt;a href=&quot;http://syntetik.be&quot; itemprop=&quot;publisher&quot;&gt;syntetik&lt;/a&gt;&lt;/dd&gt;
+		&lt;/dl&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Stad Antwerpen&lt;/h1&gt;
+	&lt;figure&gt;
+		&lt;a href=&quot;http://m.antwerpen.be&quot;&gt;
+			&lt;img src=&quot;/img/antwerpen.jpg&quot; alt=&quot;Stad Antwerpen&quot; title=&quot;Find the nearest POI in the city of Antwerp&quot; itemprop=&quot;image&quot;&gt;
+		&lt;/a&gt;
+	&lt;/figure&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+			&lt;p&gt;With this mobile web app locals or tourists can find the nearest &lt;abbr title=&quot;Point of Interest&quot;&gt;POI&lt;/abbr&gt; in and around the city of &lt;a href=&quot;http://m.antwerpen.be&quot;&gt;Antwerp&lt;/a&gt;.&lt;/p&gt;
+		&lt;/div&gt;
+
+		&lt;h2&gt;My role&lt;/h2&gt;
+		&lt;p&gt;The guys from &lt;a href=&quot;http://syntetik.be&quot;&gt;syntetik&lt;/a&gt; asked me to finish up what was already started on the front-end. I had to slice up the last designs and optimize the layout at certain breakpoints. As this was a mobile-only project I could use a lot more cutting edge CSS3 features without the necessary fallbacks for those retarded browsers.&lt;/p&gt;
+		&lt;h2&gt;Technologies:&lt;/h2&gt;
+		&lt;p&gt;HTML5, CSS3, jQuery, &lt;a href=&quot;http://dev.w3.org/geo/api/spec-source.html&quot;&gt;Geolocation&lt;/a&gt; &lt;a href=&quot;http://diveintohtml5.info/geolocation.html&quot;&gt;API&lt;/a&gt; (&lt;a href=&quot;http://html5doctor.com/finding-your-position-with-geolocation/&quot;&gt;more&lt;/a&gt;), &lt;a href=&quot;https://developers.google.com/maps/&quot;&gt;Google Maps API&lt;/a&gt;, &lt;a href=&quot;http://lesscss.org/&quot;&gt;Less&lt;/a&gt;.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/article&gt;
+
+</content>
+ </entry>
+ 
+</feed>

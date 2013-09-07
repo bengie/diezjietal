@@ -1,0 +1,24 @@
+---
+layout: default
+title: Ramblings
+permalink: /blog/
+---
+
+<section>
+	<ul class="archive-list" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+	{% for post in site.categories.blog %}
+		<li>
+			<article class="article--teaser" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+				<div class="article__meta">
+					<time datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished">
+						{{post.date | date: "%B %d, %Y"}}
+					</time>
+				</div>
+				<div class="article__body" itemprop="articleBody">
+					<a href="{{ post.url }}" itemprop="url name">{{ post.title }}</a>
+				</div>
+			</article>
+		</li>
+	{% endfor %}
+	</ul>
+</section>

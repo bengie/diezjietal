@@ -1,0 +1,108 @@
+body {
+	background-color: $bg-color;
+	color: $font-color;
+	font: {
+		size: $base-font-size;
+		family: $georgia;
+	}
+	line-height: $base-line-height;
+	@media (max-width: $bp2) {
+		font-size: $base-font-size - 2;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $helvetica;
+	color: $headings-color;
+	margin: 0 0 $base-font-size 0;
+}
+
+h1 {
+	font-size: $h1-size;
+	margin-bottom: 2 * $base-font-size;
+	line-height: 1.1;
+}
+h2 {
+	font-size: $h2-size;
+	line-height: 1.2;
+}
+h3 {
+	font-size: $h3-size;
+	line-height: 1.3;
+}
+h4 {
+	font-size: $h4-size;
+	line-height: 1.4;
+}
+h5 {
+	font-size: $h5-size;
+}
+h6 {
+	font-size: $h6-size;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	border-bottom: 1px solid $link-color;
+	&:visited {
+		color: $link-color-visited;
+		border-color: $link-color-visited;
+	}
+	&:focus,
+	&:hover {
+		color: $link-color-hover;
+		border-bottom-color: $link-color-hover;
+	}
+	&:active {
+		color: $link-color-active;
+		border-bottom-color: $link-color-active;
+	}
+}
+
+// responsive images
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+dl {
+	display: block;
+}
+dt,
+dd {
+	@include inline-block;
+	margin: 0;
+	padding: 0;
+}
+ul,
+ol {
+	padding: 0;
+	margin: 0 0 1em 0;
+	@media (max-width: $bp2) {
+		padding-left: 2em;
+	}
+}
+abbr {
+	cursor: help;
+}
+code {
+	background-color: $border-color;
+	font-style: $base-font-size - 2;
+}
+blockquote {
+	font-style: italic;
+	.author {
+		text-align: right;
+		display: block;
+		font-size: .875em;
+	}
+}

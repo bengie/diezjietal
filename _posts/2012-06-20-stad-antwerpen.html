@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "Stad Antwerpen"
+date:   2012-02-06
+categories: projects
+---
+<article class="article--full" itemscope itemtype="http://schema.org/TechArticle" role="article">
+	<div class="article__meta">
+		<time datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">
+			{{ page.date | date: "%B %d, %Y"}}
+		</time>
+		<dl>
+			<dt>Client:</dt>
+			<dd><a href="http://syntetik.be" itemprop="publisher">syntetik</a></dd>
+		</dl>
+	</div>
+	<h1 itemprop="name">{{ page.title }}</h1>
+	<figure>
+		<a href="http://m.antwerpen.be">
+			<img src="/img/antwerpen.jpg" alt="Stad Antwerpen" title="Find the nearest POI in the city of Antwerp" itemprop="image">
+		</a>
+	</figure>
+	<div class="article__body" itemprop="description articleBody">
+		<div class="intro">
+			<p>With this mobile web app locals or tourists can find the nearest <abbr title="Point of Interest">POI</abbr> in and around the city of <a href="http://m.antwerpen.be">Antwerp</a>.</p>
+		</div>
+
+		<h2>My role</h2>
+		<p>The guys from <a href="http://syntetik.be">syntetik</a> asked me to finish up what was already started on the front-end. I had to slice up the last designs and optimize the layout at certain breakpoints. As this was a mobile-only project I could use a lot more cutting edge CSS3 features without the necessary fallbacks for those retarded browsers.</p>
+		<h2>Technologies:</h2>
+		<p>HTML5, CSS3, jQuery, <a href="http://dev.w3.org/geo/api/spec-source.html">Geolocation</a> <a href="http://diveintohtml5.info/geolocation.html">API</a> (<a href="http://html5doctor.com/finding-your-position-with-geolocation/">more</a>), <a href="https://developers.google.com/maps/">Google Maps API</a>, <a href="http://lesscss.org/">Less</a>.</p>
+	</div>
+</article>
+

@@ -1,0 +1,46 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// MASTER.SCSS
+//
+// import all partials here
+//
+////////////////////////////////////////////////////////////////////////////////
+
+@import "compass";
+
+// Responsive grids for Compass
+// http://susy.oddbird.net/
+@import "susy";
+
+//  We  use the SMACSS approach
+// SMACSS = Scalable and Modular Architecture for CSS
+// http://smacss.com/
+
+// At the very core of SMACSS is categorization.
+// By categorizing CSS rules, we begin to see patterns and can define better practices around each of these patterns.
+
+//There are five types of categories:
+
+// 1. Base
+// 2. Layout
+// 3. Module
+// 4. State
+// 5. Theme
+
+
+@import "site-settings";
+
+@import "base/normalize";
+@import "base/defaults";
+@import "base/typography";
+@import "base/syntax";
+
+@import "layout/scaffolding";
+
+@import "module/nav";
+@import "module/articles";
+@import "module/archive";
+@import "module/disqus";
+@import "module/island";
+
+// @import "dev";

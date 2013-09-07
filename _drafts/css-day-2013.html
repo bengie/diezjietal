@@ -1,0 +1,102 @@
+---
+layout: blog
+title:  "CSS Day 2013"
+date:
+categories: blog
+tags: [conferences, CSS, Amsterdam]
+---
+
+<article class="article--full" itemprop="newsArticle" itemscope itemtype="http://schema.org/NewsArticle" role="article">
+    <div class="article__meta">
+        <span itemprop="datePublished">
+            {{ page.date | date: "%B %d, %Y"}}
+        </span>
+    </div>
+    <h1 itemprop="name">{{ page.title }}</h1>
+    <div class="article__body" itemprop="description articleBody">
+        <div class="intro">
+            <p>An entire day about CSS. <br> Does that even make sense? <br> Yes, it does!</p>
+        </div>
+        <h2>The line-up</h2>
+        <p>The <a href="http://cssday.nl/">CSS Day</a> line-up was solid. Brilliant in one word. If it wasn't a <a href="http://www.w3.org/Style/CSS/current-work">W3C CSS module</a> maintainer, it was a pioneer and they were about to share the most awesome secrets on CSS modules with us.</p>
+        <p>In order of appearance:</p>
+        <ol>
+            <li>Eric Meyer on <a href="#fonts-n-texts">fonts &amp; texts</a></li>
+            <li>Bert Bos on <a href="#selectors">selectors</a></li>
+            <li>Stephen Hay on <a href="#flexbox">flexbox</a></li>
+            <li>Divya Manian on <a href="#filters-n-compositiing">filters &amp; compositing</a></li>
+            <li>Tab Atkins on <a href="#variables-n-conditionals">variables &amp; conditionals</a></li>
+            <li>Daniel Glazman on <a href="media-queries">media queries</a></li>
+            <li>Peter Gasston on <a href="animations-n-transitions">animations &amp; transitions</a></li>
+            <li>Lea Verou on <a href="border-radius">border-radius</a></li>
+        </ol>
+        <h2 id="fonts-n-texts">Fonts &amp; Texts</h2>
+        <p>The Godfather of CSS Eric Meyer had the honour to kick-off the conference. Seeing Mr. Meyer in the flesh was all the convincing I needed to buy me a ticket. If you've ever heard a rumour of this being a man that rarely smiles, I have to disappoint you. It turned out to be a very kind, laughable and approachable guy.</p>
+        <img src="http://distilleryimage7.s3.amazonaws.com/f3465e8ad4d311e2986822000aa8062e_7.jpg" alt="Eric Meyer speaking @ CSS Day 2013">
+        <p>Playing with fonts, also known as <strong>typography</strong>, doesn't have to be limited to including various webfonts but it can be CSS trickery as well. </p>
+        <h3>Some examples</h3>
+        {% highlight css %}
+/* example 1 */
+@font-face {
+    font-family: "xkycd"; /* rename your long font, save some bytes */
+    src: url("Xylophone-Regular-Condensed.eot"); /* the font file */
+    src: local("Xylophone Regular condensed"), /* bulletproof, use it from the system. Could save a HTTP request */
+         ...
+}
+body {
+    font: 1em/1.5 xkycd, sans-serif;
+}
+
+/* example 2 */
+@font-face {
+    font-stretch: expanded; /* this one I never heard of before */
+    font-family: Helvetica; /* name it Helvetica */
+    src: local('Impact'); /* but use Impact */
+}
+
+/* example 3 */
+@font-face {
+    font-family: "Helvetica"; /* name it Helvetica */
+    font-weight: 100; /* and use it when font-weight is 100 */
+    src: local("Zapfino"); /* but use system font Zapfino */
+}
+body {
+    font: 1em Helvetica, sans-serif;
+}
+h1::first-letter {
+    font-weight: 100; /* the trigger */
+    font-size: 200;
+}
+/* this results in a word with the first letter in a swirly font, while rest of word is in real Helvetica */
+        {% endhighlight %}
+        <p>Did you ever have to create a fancy heading with a stylized <strong>&amp;</strong> (e.g. Beauty &amp; the beast)? Yes, you did. You would tackle this with an extra span surrounding the character like this <code>&lt;h1&gt;Beauty &lt;span&gt;&amp;&lt;/span&gt; the beast&lt;/h1&gt;</code>. With unicode-range this is possible <em>without</em> the use of that extra unsemantic <code>span</code>.</p>
+{% highlight css %}
+@font-face {
+    font-family: Helvetica;
+    src: local("Zapfino"); /* use Zapfino */
+    unicode-range: U+26; /* will target ampersand (&) only */
+}
+{% endhighlight%}
+        <p><strong>Disclaimer</strong>: Use with caution. Test in your browsers.</p>
+
+        <h2 id="selectors">Selectors</h2>
+        <p>Bert Bos is one of the inventors of CSS and so I expected a lot of this talk. But unfortunately his talk turned out to be a bit boring. After a history lesson, he started going over all the basic selectors. I'm sure Bert can be a valuable source of information and can give use some new knowledge about CSS but I wished someone from the organisation told him he was going to speak to an audience of advanced CSS users.</p>
+        <p>I did pick up a few properties that I didn't know off or forgot they existed.</p>
+        {% highlight css%}
+display: run-in;
+@page {}
+::value
+:not()
+        {% endhighlight%}
+        <h2 id="flexbox">Flexbox</h2>
+        <p>Stephen immediately busted the myth that <a href="http://dev.w3.org/csswg/css-flexbox/">flexbox</a> is for page layout. It's for UI layout (e.g. navbars) while <a href="http://dev.w3.org/csswg/css-grid/">grid layout</a> and <a href="http://dev.w3.org/csswg/css-page-4/">page layout</a> (these specs will merge) are meant for page layouts.</p>
+        <p>The talk was a fly-over of what's possible and how the syntax works. </p>
+        <h3>Solutions</h3>
+        <p>With flexbox we get true centering (horizontal and vertical)</p>
+        <h2>What I've learned</h2>
+        <ul>
+            <li>A lot of new CSS tricks with fallbacks.</li>
+            <li>Be star-strucked, be respectful, but never ever be afraid to talk to that person.</li>
+        </ul>
+    </div>
+</article>

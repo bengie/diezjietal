@@ -1,0 +1,15 @@
+{% include head.html %}
+{% include header.html %}
+	<div class="primary" role="main">
+		<div class="container">
+			{{ content }}
+			<div class="disqus pre--1">
+				{% include disqus.html %}
+			</div>
+		</div>
+	</div>
+	{% include footer.html %}
+	{% include scripts.html %}
+	{% include analytics.html %}
+</body>
+</html>

@@ -1,0 +1,5 @@
+name: Diezjietal
+pygments: true
+exclude: [config.rb, sass, package.json, node_modules, Gruntfile.js, drafts]
+markdown: kramdown
+excerpt_separator: "" # Workaround for http://blog.slaks.net/2013-08-09/jekyll-tag-was-never-closed
