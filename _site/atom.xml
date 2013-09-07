@@ -3,12 +3,31 @@
  <title>Diezjietal RSS feed</title>
  <link href="http://diezjietal.be/atom.xml" rel="self"/>
  <link href="http://diezjietal.be/"/>
- <updated>2013-08-14T08:55:00+02:00</updated>
+ <updated>2013-09-07T08:35:36+02:00</updated>
  <id>http://diezjietal.be/</id>
  <author>
    <name>Gregory Van Looy</name>
    <email>greg@diezjietal.be</email>
  </author>
+ 
+ <entry>
+   <title>Some kind of workflow</title>
+   <link href="http://diezjietal.be/blog/2013/09/07/some-kind-of-workflow.html"/>
+   <updated>2013-09-07T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/09/07/some-kind-of-workflow</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-09-07&quot; itemprop=&quot;datePublished&quot;&gt;
+			September 07, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Some kind of workflow&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;p&gt;On sept 6th we had a little &lt;a href=&quot;http://wolfr.github.io/jekyll-camp/&quot;&gt;Jekyll meetup&lt;/a&gt; in Ghent and it was my very first presentation ever.&lt;/p&gt;
+		&lt;p&gt;The talk was about modern day front-end workflows with Jekyll, CSS and Grunt. View this presentation @ &lt;a href=&quot;http://bengie.github.io/some-kind-of-workflow&quot;&gt;http://bengie.github.io/some-kind-of-workflow&lt;/a&gt;. Requires a standards aware browser.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
  
  <entry>
    <title>Cameo in .net #245</title>
