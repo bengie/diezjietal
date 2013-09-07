@@ -3,7 +3,7 @@ diezjietal
 
 Source code of my company website and blog [diezjietal.be](http://diezjietal.be)
 
-Development is done with [Jelyll](http://jekyllrb.com), [Sass](http://sass-lang.com), [Compass](http://compass-style.org/), [Susy](http://susy.oddbird.net/) and [Grunt](http://gruntjs.com/).
+Development is done with [Jekyll](http://jekyllrb.com), [Sass](http://sass-lang.com), [Compass](http://compass-style.org/), [Susy](http://susy.oddbird.net/) and [Grunt](http://gruntjs.com/).
 
 ## License
 
