@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     jekyll: {
         server: {
             server: true,
-            server_port: 8000,
+            server_port: 8001,
             auto: true,
             dest: './_site',
             src: '.'

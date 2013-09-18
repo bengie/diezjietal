@@ -3,12 +3,31 @@
  <title>Diezjietal RSS feed</title>
  <link href="http://diezjietal.be/atom.xml" rel="self"/>
  <link href="http://diezjietal.be/"/>
- <updated>2013-09-07T08:35:36+02:00</updated>
+ <updated>2013-09-18T10:19:39+02:00</updated>
  <id>http://diezjietal.be/</id>
  <author>
    <name>Gregory Van Looy</name>
    <email>greg@diezjietal.be</email>
  </author>
+ 
+ <entry>
+   <title>Harry Roberts can read my mind</title>
+   <link href="http://diezjietal.be/blog/2013/09/18/Harry-Roberts-can-read-my-mind.html"/>
+   <updated>2013-09-18T00:00:00+02:00</updated>
+   <id>http://diezjietal.be/blog/2013/09/18/Harry-Roberts-can-read-my-mind</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-09-18&quot; itemprop=&quot;datePublished&quot;&gt;
+			September 18, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Harry Roberts can read my mind&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;p&gt;I was planning to write a presentation on modular design for designers until I bumped into these slides from a presentation by Harry Roberts (&lt;a href=&quot;http://twitter.com/csswizardry&quot;&gt;@csswizardry&lt;/a&gt;). I couldn't agree more with this. So jealous that I didn't write this. &lt;a href=&quot;https://speakerdeck.com/csswizardry/normalising-designs-for-better-quality-css&quot;&gt;Direct link&lt;/a&gt;&lt;/p&gt;
+		&lt;script async class=&quot;speakerdeck-embed&quot; data-id=&quot;46174430fcdd0130a20e72d5a4813b02&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
+	&lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
  
  <entry>
    <title>Some kind of workflow</title>
