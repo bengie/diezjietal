@@ -9,7 +9,7 @@
 	}
 	li {
 		@include span-columns(1, ($total-columns - 1));
-		padding-top: 2.5em;
+		padding-top: 1.1em;
 		font-size: 1.5em;
 		font-weight: bold;
 		line-height: 1;
@@ -32,8 +32,8 @@
 		border: none;
 		&:focus,
 		&:hover {
-			color: $link-color;
-			border-bottom: 1px solid $link-color;
+			color: $white !important;
+			// border-bottom: 1px solid $link-color;
 		}
 	}
 	@media (max-width: $bp1) {

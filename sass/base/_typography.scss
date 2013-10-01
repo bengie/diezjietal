@@ -12,7 +12,7 @@ h1 {
 			&:hover {
 				text-decoration: none;
 				border-bottom: 1px solid $link-color;
-				color: $link-color;
+				color: $white !important;
 			}
 		}
 	}

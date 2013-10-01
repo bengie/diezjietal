@@ -48,6 +48,7 @@
 		span {
 			font-size: 0;
 		}
+		margin: 0;
 		@media (max-width: $bp1) {
 			margin-top: .4em;
 			margin-bottom: .4em;
@@ -55,18 +56,19 @@
 			width: auto;
 		}
 	}
+	border-bottom: 1px solid $border-color;
 }
 
 .hero-unit {
-	@include pre(1);
-	@media (max-width: $bp2) {
-		margin-left: 0;
-	}
+	// @include pre(1);
+	// @media (max-width: $bp2) {
+	// 	margin-left: 0;
+	// }
 }
 
 section,
 .page-footer {
-	padding: {
+	margin: {
 		top: 2em;
 		bottom: 2em;
 	}
@@ -76,10 +78,10 @@ section,
 .home {
 	section {
 		h2 {
-			@include pre(1);
-			@media (max-width: $bp2) {
-				margin-left: 0;
-			}
+			// @include pre(1);
+			// @media (max-width: $bp2) {
+			// 	margin-left: 0;
+			// }
 		}
 	}
 }

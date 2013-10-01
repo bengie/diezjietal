@@ -1,9 +1,12 @@
+* {
+	@include box-sizing(border-box);
+}
 body {
 	background-color: $bg-color;
 	color: $font-color;
 	font: {
 		size: $base-font-size;
-		family: $georgia;
+		family: $helvetica;
 	}
 	line-height: $base-line-height;
 	@media (max-width: $bp2) {
@@ -57,7 +60,8 @@ a {
 	&:focus,
 	&:hover {
 		color: $link-color-hover;
-		border-bottom-color: $link-color-hover;
+		background-color: $link-color;
+		border-bottom: none;
 	}
 	&:active {
 		color: $link-color-active;
@@ -105,4 +109,8 @@ blockquote {
 		display: block;
 		font-size: .875em;
 	}
+}
+time {
+	font-size: .8125em;
+	color: #666;
 }

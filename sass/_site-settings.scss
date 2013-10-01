@@ -78,15 +78,15 @@ $micro-size:        $base-font-size/1.5;
 // =============================================================================
 $white: #fff;
 $black: #000;
-$bg-color: $white;
+$bg-color: #ebebeb;
 $font-color: #321321;
 $headings-color: #000;
 $dropcap-color: #999;
-$border-color: Silver;
-$link-color: DodgerBlue; // blue
-$link-color-hover: FireBrick; // red
-$link-color-active: ForestGreen; // green
-$link-color-visited: Indigo;
+$border-color: #f6303e;
+$link-color: $border-color; // red
+$link-color-hover: $white;
+$link-color-active: darken($link-color, 15%);
+$link-color-visited: lighten($link-color, 15%);
 
 // =============================================================================
 // 4. SUSY GRID
