@@ -3,7 +3,7 @@ pre {
 }
 
 .highlight { background: #333333; color: #fff; line-height: 1.3; font-size: $milli-size; padding: 1px 1em; margin-bottom: 1em; overflow: auto;}
-.highlight code { background-color: transparent;}
+.highlight code { background-color: transparent; font-size: 1em;}
 .highlight .hll { background-color: #49483e }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
