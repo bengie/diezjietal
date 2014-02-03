@@ -60,6 +60,8 @@ module.exports = function(grunt) {
             // excludes are configured in _config.yml
         },
         drafts: {
+          server: true,
+          server_port: 8001,
           auto: true,
           dest: './_site',
           src: '.',

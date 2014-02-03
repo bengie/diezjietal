@@ -3,12 +3,53 @@
  <title>Diezjietal RSS feed</title>
  <link href="http://diezjietal.be/atom.xml" rel="self"/>
  <link href="http://diezjietal.be/"/>
- <updated>2013-10-16T14:17:40+02:00</updated>
+ <updated>2014-02-03T11:58:04+01:00</updated>
  <id>http://diezjietal.be/</id>
  <author>
    <name>Gregory Van Looy</name>
    <email>greg@diezjietal.be</email>
  </author>
+ 
+ <entry>
+   <title>Stop with the over-design</title>
+   <link href="http://diezjietal.be/blog/2014/02/03/stop-with-the-overdesign.html"/>
+   <updated>2014-02-03T11:58:04+01:00</updated>
+   <id>http://diezjietal.be/blog/2014/02/03/stop-with-the-overdesign</id>
+   <content type="html">&lt;article class=&quot;article--full&quot; itemprop=&quot;newsArticle&quot; itemscope itemtype=&quot;http://schema.org/NewsArticle&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;span itemprop=&quot;datePublished&quot;&gt;
+			February 03, 2014
+		&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Stop with the over-design&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;div class=&quot;intro&quot;&gt;
+			&lt;p&gt;Dear designers, stop with the over-design of things&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;h2&gt;Just stop it!&lt;/h2&gt;
+		&lt;p&gt;Just to make things clear, I'm a fan of &lt;cite&gt;Design Without Limitations&lt;/cite&gt;. Hell yeah, I used to have this quote as a background on my computer back in the days I was a designer, but never, ever did I design something that could have resulted in bad code.&lt;/p&gt;
+		&lt;p&gt;As a designer you want to give your users a &lt;del&gt;good&lt;/del&gt; &lt;ins&gt;perfect&lt;/ins&gt; experience on the website. You start designing and tweaking. These days with &lt;a href=&quot;http://alistapart.com/article/responsive-web-design/&quot;&gt;Responsive Web Design&lt;/a&gt; you have a lot to design and tweak. There are desktops, tablets, smartphones and who knows what else the future may bring us. But if you start redesigning &lt;em&gt;every&lt;/em&gt; breakpoint, moving stuff around and hiding/showing content, you are lost my brother. A simple example: &lt;a href=&quot;http://getbootstrap.com/javascript/#tabs&quot;&gt;Tabs&lt;/a&gt; can't just magically turn into &lt;a href=&quot;http://getbootstrap.com/javascript/#collapse&quot;&gt;accordions&lt;/a&gt; when you switch breakpoints. They both require a completely different HTML structure. Back to the drawing board, my young padawan.&lt;/p&gt;
+		&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Dieter_Rams&quot;&gt;A wise man&lt;/a&gt; once said : &lt;cite&gt;Good design is as little design as possible.&lt;/cite&gt;&lt;/p&gt;
+		&lt;h2&gt;Performance matters&lt;/h2&gt;
+		&lt;blockquote&gt;
+			Just because we can do something doesn't mean we should.
+			&lt;span&gt;Jurassic Park&lt;/span&gt;
+		&lt;/blockquote&gt;
+		&lt;p&gt;CSS3 brought us many goodies like rounded corners, shadows, gradients, animations and much more, but they come at a price. And that price is &lt;strong&gt;performance&lt;/strong&gt;. We can create that subtle shadow around your box a lot easier now, but giving all your boxes shadows can make your FPS plummet and make your shiny UI unusable.&lt;/p&gt;
+		&lt;p&gt;Adding all those fancy &lt;a href=&quot;http://bradfrost.github.io/this-is-responsive/patterns.html&quot;&gt;Responsive patterns&lt;/a&gt; and &lt;a href=&quot;http://usejquery.com/&quot;&gt;JS plugins&lt;/a&gt; may seem a great idea but they quickly turn your website in a slow monster&lt;sup&gt;*&lt;/sup&gt;. And hey, what's the use of designing that great UI if your user will never see it because he already left your site?&lt;/p&gt;
+		&lt;p&gt;So make a decision on what features you really want and start designing for those you need to drop. Because designing is all about finding solutions for a certain problem.&lt;/p&gt;
+		&lt;h2&gt;How to fix this?&lt;/h2&gt;
+		&lt;p&gt;It's easy. &lt;strong&gt;Designers should learn to code!&lt;/strong&gt; I don't mean hardcore development or advanced JavaScript but basic understanding of modular and scalable HTML and CSS. you don't even have to write it but just get familiar with, and most of all, learn from frameworks like &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; or &lt;a href=&quot;http://foundation.zurb.com/&quot;&gt;Foundation&lt;/a&gt;. Read up on &lt;a href=&quot;http://smacss.com/&quot;&gt;SMACSS&lt;/a&gt; and &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;BEM&lt;/a&gt;. Go and talk with the front-ender(s) in your company.&lt;/p&gt;
+		&lt;p&gt;Basically it comes down to stop seeing your website as pages, and design each page separately, but see them as containers that hold different building blocks. No matter the page it's on, that block will always look and behave the same.&lt;/p&gt;
+		&lt;p&gt;Maybe it's a bit out of your comfort zone and you probably already have a lot on your hands to keep up with current design standards but this will help us both (you as a designers, we as front-enders) a lot. You will learn to understand why we say &quot;NO&quot; each time you come up with that fancy gimmick in your UI. I promise you when you write a blog post about why it's important to have that feature I will read it and I will listen to your arguments.&lt;/p&gt;
+		&lt;h4&gt;* Something to read:&lt;/h4&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/&quot;&gt;Painting pixels&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/speed/scrolling/&quot;&gt;Scrolling performance&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/article&gt;</content>
+ </entry>
  
  <entry>
    <title>Harry Roberts can read my mind</title>
