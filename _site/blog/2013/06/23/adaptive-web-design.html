@@ -10,11 +10,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="cleartype" content="on">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="keywords" content="freelance, front-end dev, webdesigner, web designer, Wordpress, HTML5, CSS3, jQuery, Belgium, responsive, adaptive">
+	<meta name="keywords" content="freelance, front-end dev, consultant, HTML, CSS, Sass, Grunt, workflow, HTML5, CSS3, Belgium, responsive, adaptive">
 	<link rel="stylesheet" href="/css/main.css">
 	<script src="/js/src/modernizr.min.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/Blog" class="blog">
+
 <header class="page-header" role="banner">
 	<div class="container">
 		<h1><a href="/" id="top" title="Back to Diezjietal's homepage">D<span>ie</span>zj<span>ie</span>t<span>a</span>l</a></h1>
@@ -54,54 +55,50 @@
 		<p>It all starts with some HTML. Simply add <code>alt=""</code> and <code>title=""</code> attributes to images and links has huge benefits in UX for people who use screen readers. Next, use semantically correct elements, like the new <code>header, nav, article</code> in HTML5. Again, screen readers will be very happy.</p>
 		<h3>With CSS</h3>
 		<p>Provide fallbacks for browsers that don't understand those fancy CSS3 gradients or rgba(). Don't rely entirely on <a href="http://modernizr.com/">Modernizr</a>, because when there's no JavaScript available, <code>.no-cssgradients { background: hotPink;}</code> won't do you any good. Instead integrate a fallback in your base code (see example). Browsers that don't understand the gradient code will skip that line and use the fallback.</p>
-		<div class="highlight"><pre><code class="css"><span class="nc">.gradient</span> <span class="p">{</span>
-  <span class="k">background</span><span class="o">:</span> <span class="m">#ff5db1</span><span class="p">;</span> <span class="c">/* fallback Old browsers */</span>
-  <span class="k">background</span><span class="o">:</span> <span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">to</span> <span class="k">bottom</span><span class="o">,</span> <span class="m">#ff5db1</span> <span class="m">0</span><span class="o">%,</span><span class="m">#ef017c</span> <span class="m">100</span><span class="o">%</span><span class="p">);</span> <span class="c">/* W3C */</span>
-<span class="p">}</span>
-		
-</code></pre></div>
+		<div class="highlight"><pre><code class="language-css" data-lang="css">.gradient {
+  background: #ff5db1; /* fallback Old browsers */
+  background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%); /* W3C */
+}</code></pre></div>
 		<h3>With WAI-ARIA</h3>
 		<p><a href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a> are the W3C's guidelines for Accessible Rich Internet Applications. By adding some special attributes to your HTML elements you are once more helping screen readers. Have a look at the example below and look for <code>role=""</code> and <code>aria-xxxxx=""</code>.</p>
-		<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;widget&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;widget&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-tabs&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;first active&quot;</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> <span class="na">aria-selected=</span><span class="s">&quot;true&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;0&quot;</span> <span class="na">aria-controls=</span><span class="s">&quot;most-read&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-1&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#most-read&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">id=</span><span class="s">&quot;tab-id-1&quot;</span><span class="nt">&gt;</span>Meest gelezen<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;last&quot;</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> <span class="na">aria-selected=</span><span class="s">&quot;false&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">aria-controls=</span><span class="s">&quot;most-shared&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-2&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#most-shared&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">id=</span><span class="s">&quot;tab-id-2&quot;</span><span class="nt">&gt;</span>Meest gedeeld<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-        <span class="c">&lt;!-- / .tablist --&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-content&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane active&quot;</span> <span class="na">id=</span><span class="s">&quot;most-read&quot;</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-1&quot;</span> <span class="na">aria-expanded=</span><span class="s">&quot;true&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">&quot;custom-list&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-1&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.<span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-2&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.<span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ol&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;most-shared&quot;</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;tab-id-2&quot;</span> <span class="na">aria-expanded=</span><span class="s">&quot;false&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">&quot;custom-list&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-1&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum proident tempor nulla cillum fugiat.<span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;list__item-2&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lorem ipsum proident tempor nulla cillum fugiat.<span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ol&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="c">&lt;!-- / .tabcontent --&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="c">&lt;!--  .tabs --&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="c">&lt;!--  / .widget --&gt;</span>
-		
-</code></pre></div>
+		<div class="highlight"><pre><code class="language-html" data-lang="html">&lt;div class=&quot;widget&quot;&gt;
+    &lt;div class=&quot;tabs&quot; role=&quot;widget&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+            &lt;li class=&quot;first active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; tabindex=&quot;0&quot; aria-controls=&quot;most-read&quot; aria-labelledby=&quot;tab-id-1&quot;&gt;
+                &lt;a href=&quot;#most-read&quot; data-toggle=&quot;tab&quot; role=&quot;presentation&quot; tabindex=&quot;-1&quot; id=&quot;tab-id-1&quot;&gt;Meest gelezen&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;last&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; tabindex=&quot;-1&quot; aria-controls=&quot;most-shared&quot; aria-labelledby=&quot;tab-id-2&quot;&gt;
+                &lt;a href=&quot;#most-shared&quot; data-toggle=&quot;tab&quot; role=&quot;presentation&quot; tabindex=&quot;-1&quot; id=&quot;tab-id-2&quot;&gt;Meest gedeeld&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;!-- / .tablist --&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane active&quot; id=&quot;most-read&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab-id-1&quot; aria-expanded=&quot;true&quot; aria-hidden=&quot;false&quot;&gt;
+                &lt;ol class=&quot;custom-list&quot;&gt;
+                    &lt;li class=&quot;list__item-1&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;list__item-2&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;Lorem ipsum enim id sit aute. Lorem ipsum in ex veniam sint.&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;most-shared&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab-id-2&quot; aria-expanded=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+                &lt;ol class=&quot;custom-list&quot;&gt;
+                    &lt;li class=&quot;list__item-1&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;Lorem ipsum proident tempor nulla cillum fugiat.&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;list__item-2&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;Lorem ipsum proident tempor nulla cillum fugiat.&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- / .tabcontent --&gt;
+    &lt;/div&gt;
+    &lt;!--  .tabs --&gt;
+&lt;/div&gt;
+&lt;!--  / .widget --&gt;</code></pre></div>
 		<p>Screen readers, and other assistive technologies, use this to create overviews from your content. So the user can jump to the certain sections in your content.</p>
 		<p>Changing the <code>aria-xxxxx</code> values, and <code>tabindex</code>, does require the use of JavaScript, but modern screen readers have no problem with that. If JS is not available  make sure all your tab panels are visible with CSS.</p>
 		<h3>With JavaScript</h3>
@@ -141,6 +138,9 @@
 		</div>
 	</div>
 </footer>
+
+	<div class="banner" ></div>
+
 	
 	
 <script>

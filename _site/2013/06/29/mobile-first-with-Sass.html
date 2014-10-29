@@ -1,0 +1,140 @@
+<article class="article--full" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+    <div class="article__meta">
+        <time datetime="2013-06-29" itemprop="datePublished">
+            June 29, 2013
+        </time>
+    </div>
+    <h1 itemprop="name">Mobile First With Sass</h1>
+    <div class="article__body" itemprop="description articleBody">
+        <div class="intro">
+            <p>Taking a Mobile First approach with your CSS and keeping &lt;IE9 happy</p>
+        </div>
+        <h2>The philosophy</h2>
+        <p>A Mobile First approach is starting with a basic experience for mobile devices. The well known one-column stack, and with <code>@media</code> queries you build new layouts for every breakpoint in your design. Devices, or browsers, that don't understand <code>@media</code> queries get the basic experience.</p>
+        <h2>The pitfall</h2>
+        <p>From a <a href="/blog/2013/06/23/adaptive-web-design.html">Progressive Enhancement point-of-view</a> I find this an excellent approach. But this also means you will serve the one-column stack to those legacy desktop browsers (&lt; IE9) who don't understand <code>@media</code> queries. Unfortunately that's not something we can all get away with.</p>
+        <h2>The solution</h2>
+        <p>Luckily we can fix this. With the help of <a href="http://sass-lang.com">Sass</a> and some very clever <a href="http://jakearchibald.github.io/sass-ie/">SassScripting by Jake Archibald</a>.</p>
+        <p>These snippets will generate a legacy stylesheet that serves the desktop layout to &lt;IE9. Yay!</p>
+        <h2>How do you start?</h2>
+        <ol>
+            <li>
+                <p>Add conditional comments to the <code>&lt;head&gt;</code> of your html file.</p>
+                <div class="highlight"><pre><code class="language-html" data-lang="html">&lt;!--[if lte IE 8]&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/master-old-ie.css&quot;&gt;
+&lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/master.css&quot;&gt;
+&lt;!--&lt;![endif]--&gt;</code></pre></div>
+            </li>
+            <li>
+                <p>Create a <code>.scss</code> version of your legacy stylesheet. e.g. <code>master-old-ie.scss</code> and add the following snippet.</p>
+                <div class="highlight"><pre><code class="language-scss" data-lang="scss">$fix-mqs: 60em; // the breakpoint where the desktop layout starts
+@import &#39;master&#39;; // import all other scss</code></pre></div>
+                <p>The next step will clarify the variables.</p>
+            </li>
+            <li>
+                <p>Add the following to your <code>_mixins.scss</code> file, or create a new partial, but don't forget to <code>@import</code> it in your <code>master.scss</code> file.</p>
+                <div class="highlight"><pre><code class="language-scss" data-lang="scss">$fix-mqs: false !default; // set a default value and override it in master-old-ie.scss
+
+// min-width media queries
+@mixin mq-min($width) {
+    // if we want the media query fallback, and yes we do in our master-old-ie.scss
+    @if $fix-mqs {
+        // if the width value set in master-old-ie.scss is greater or equal to the width set in our mixin
+        @if $fix-mqs &gt;= $width {
+            // compile the content of our mixin WITHOUT the media query
+            @content;
+        }
+    }
+    @else {
+        // else compile content of mixin WITH media query
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    }
+}
+// max-width media queries
+@mixin mq-max($width) {
+    @if $fix-mqs {
+        // same logic as above
+        @if $fix-mqs &lt;= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (max-width: $width) {
+            @content;
+        }
+    }
+}</code></pre></div>
+            </li>
+            <li>
+                <p>An example</p>
+                <div class="highlight"><pre><code class="language-scss" data-lang="scss">.container {
+    background-color: hotpink;
+    @include mq-min(30em) {
+        background-color: dodgerblue;
+    }
+    @include mq-min(60em) {
+        background-color: firebrick;
+    }
+}</code></pre></div>
+                <p>In <code>master.css</code>, this will compile to &hellip;</p>
+                <div class="highlight"><pre><code class="language-css" data-lang="css">.container {
+    background-color: hotpink;
+    @media screen and (min-width: 30em) {
+        background-color: dodgerblue;
+    }
+    @media screen and (min-width: 60em) {
+        background-color: firebrick;
+    }
+}</code></pre></div>
+                <p>And in <code>master-old-ie.css</code> this will compile to &hellip;</p>
+                <div class="highlight"><pre><code class="language-css" data-lang="css">.container {
+    background-color: hotpink;
+    background-color: dodgerblue;
+    background-color: firebrick;
+}</code></pre></div>
+                <p>Okay, it's a little dirty to repeat the same property and let the cascade do the lifting but hey, it gets the job done.</p>
+            </li>
+        </ol>
+        <h2>Bonus</h2>
+        <p>A little bonus mixin to compile CSS only for our <code>master-old-ie.css</code> file. Use this if you don't want to pollute your CSS with hacks.</p>
+        <div class="highlight"><pre><code class="language-scss" data-lang="scss">$old-ie: false !default;
+
+@mixin old-ie {
+    // Only use this content if we&#39;re dealing with old IE
+    @if $old-ie {
+        @content;
+    }
+}</code></pre></div>
+        <p>Add to the top of <code>master-old-ie.scss</code></p>
+        <div class="highlight"><pre><code class="language-scss" data-lang="scss">$old-ie: true; // BONUS: we want to include some CSS hacks only to this file</code></pre></div>
+        <p>A little example &hellip;</p>
+        <div class="highlight"><pre><code class="language-scss" data-lang="scss">.selector {
+    display: inline-block;
+    // this will output/compile only in master-old-ie.scss (because we&#39;ve set $old-ie: true; at top of page) and will target IE7 with the star hack
+    @include old-ie {
+        *display: inline;
+        *zoom: 1;
+    }
+}</code></pre></div>
+        <p>Our <code>master.css</code> will compile to &hellip;</p>
+        <div class="highlight"><pre><code class="language-css" data-lang="css">.selector {
+    display: inline-block;
+}</code></pre></div>
+        <p>&hellip; and our <code>master-old-ie.css</code> will compile to &hellip;</p>
+        <div class="highlight"><pre><code class="language-css" data-lang="css">.selector {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}</code></pre></div>
+        <h2>Heads up!</h2>
+        <p>By using this approach (media queries per selector instead of one media query per breakpoint and all your selectors in that query) this will bloat your CSS output. But by <a href="https://github.com/h5bp/server-configs/blob/master/apache/README.md#gzip-components">gzipping</a> your files the difference will be negligible.</p>
+        <div class="island">
+            <h2>Credit where credit's due</h2>
+            <p>I don't want to take credit for this approach. All credits go to <a href="http://jakearchibald.com/">Jake Archibald</a>. I just wanted to make a little tutorial for Sass beginners and share my workflow with others.</p>
+        </div>
+    </div>
+</article>

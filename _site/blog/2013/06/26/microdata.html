@@ -10,11 +10,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="cleartype" content="on">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="keywords" content="freelance, front-end dev, webdesigner, web designer, Wordpress, HTML5, CSS3, jQuery, Belgium, responsive, adaptive">
+	<meta name="keywords" content="freelance, front-end dev, consultant, HTML, CSS, Sass, Grunt, workflow, HTML5, CSS3, Belgium, responsive, adaptive">
 	<link rel="stylesheet" href="/css/main.css">
 	<script src="/js/src/modernizr.min.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/Blog" class="blog">
+
 <header class="page-header" role="banner">
 	<div class="container">
 		<h1><a href="/" id="top" title="Back to Diezjietal's homepage">D<span>ie</span>zj<span>ie</span>t<span>a</span>l</a></h1>
@@ -50,37 +51,31 @@
         <p>All your webpages have a meaning. To humans this is easy to understand. An <code>&lt;article&gt;</code> on a news site will probably be a news article with a title and body text, but on a movie site, like <a href="http://imdb.com">IMDB</a>, this can contain a summary, info about director, genre, &hellip; <br> Search engines have a limited understanding of what is being discussed on those pages. By adding tags and/or attributes we help search engines to understand your content.</p>
         <h2>An example</h2>
         <p>Let's start with an easy one. All our sites contain pages. So every page is a schema, a <a href="http://schema.org/WebPage">WebPage</a>.</p>
-        <div class="highlight"><pre><code class="html"><span class="nt">&lt;html</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">&quot;http://schema.org/WebPage&quot;</span><span class="nt">&gt;</span>
+        <div class="highlight"><pre><code class="language-html" data-lang="html">&lt;html itemscope itemtype=&quot;http://schema.org/WebPage&quot;&gt;
     ...
-<span class="nt">&lt;/html&gt;</span>
-        
-</code></pre></div>
+&lt;/html&gt;</code></pre></div>
         <p>With <code>itemscope</code> you specify that the entire page, or block, is about a particular item. <code>itemtype</code> defines the block. <br> So far we've only told that our page is a WebPage, I'm pretty sure search engines are smart enough to know, without the <strong>microdata</strong>, that it's a WebPage.</p>
         <p>It gets interesting when your start marking up certain sections in your page to give extra meaning. Let's start with a <a href="http://schema.org/NewsArticle">news article</a>.</p>
-        <div class="highlight"><pre><code class="html"><span class="nt">&lt;article</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">&quot;http://schema.org/NewsArticle&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;header&gt;</span>
-        <span class="nt">&lt;h1</span> <span class="na">itemprop=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>News article title<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;/header&gt;</span>
-    <span class="nt">&lt;footer&gt;</span>written by <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/profile/peter-jackson/&quot;</span><span class="nt">&gt;</span>Peter Jackson<span class="nt">&lt;/a&gt;&lt;/span&gt;</span> on <span class="nt">&lt;time</span> <span class="na">datetime=</span><span class="s">&quot;2013-06-10&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;datePublished&quot;</span><span class="nt">&gt;</span>06/10/2013<span class="nt">&lt;/time&gt;&lt;/footer&gt;</span>
-    <span class="nt">&lt;figure&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://placehold.it/600x300&quot;</span> <span class="na">alt=</span><span class="s">&quot;image alt&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;figcaption&gt;</span>caption here<span class="nt">&lt;/figcaption&gt;</span>
-    <span class="nt">&lt;/figure&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;article__body&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;articleBody&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, natus, tenetur explicabo consequuntur non autem cum cupiditate temporibus. Dolorem, quam.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/article&gt;</span>
-        
-</code></pre></div>
+        <div class="highlight"><pre><code class="language-html" data-lang="html">&lt;article itemscope itemtype=&quot;http://schema.org/NewsArticle&quot;&gt;
+    &lt;header&gt;
+        &lt;h1 itemprop=&quot;name&quot;&gt;News article title&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;footer&gt;written by &lt;span itemprop=&quot;author&quot;&gt;&lt;a href=&quot;/profile/peter-jackson/&quot;&gt;Peter Jackson&lt;/a&gt;&lt;/span&gt; on &lt;time datetime=&quot;2013-06-10&quot; itemprop=&quot;datePublished&quot;&gt;06/10/2013&lt;/time&gt;&lt;/footer&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;http://placehold.it/600x300&quot; alt=&quot;image alt&quot; itemprop=&quot;image&quot;&gt;
+        &lt;figcaption&gt;caption here&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;div class=&quot;article__body&quot; itemprop=&quot;articleBody&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, natus, tenetur explicabo consequuntur non autem cum cupiditate temporibus. Dolorem, quam.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</code></pre></div>
         <p>There's a lot more information now for search engines to index and give better search results to the user.</p>
         <h3>Nesting schemas</h3>
         <p>You can nest schemas. With the <code>article</code> example above we nested a Movie schema in a WebPage schema. That's an easy one.</p>
         <p>Let's break up our <code>article</code> example. We see the <code>span itemprop="author"</code>. It's a name of a <a href="http://schema.org/Person">Person</a>. Now apply some more schema.</p>
-        <div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">&quot;author&quot;</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">&quot;http://schema.org/Person&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/profile/peter-jackson/&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;name url&quot;</span><span class="nt">&gt;</span>Peter Jackson<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/span&gt;</span>
-        
-</code></pre></div>
+        <div class="highlight"><pre><code class="language-html" data-lang="html">&lt;span itemprop=&quot;author&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
+    &lt;a href=&quot;/profile/peter-jackson/&quot; itemprop=&quot;name url&quot;&gt;Peter Jackson&lt;/a&gt;
+&lt;/span&gt;</code></pre></div>
         <p>Note: You can add multiple properties to one <code>itemprop</code>.</p>
         <h2>In the wild</h2>
         <p>We applied these schemas to the new 2013 <a href="http://standaard.be">De Standaard</a> website <small>( more on this <a href="/projects/2013/06/20/de-standaard.html">project</a> )</small> and only a few days after the launch multiple articles scored first-page results on <a href="http://google.be">Google.be</a>, and they still do.</p>
@@ -113,6 +108,9 @@
 		</div>
 	</div>
 </footer>
+
+	<div class="banner" ></div>
+
 	
 	
 <script>

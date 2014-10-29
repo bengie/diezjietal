@@ -42,6 +42,7 @@ $monospace:         Monaco, Courier New, monospace;
 $ampersand:         Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
 $verdana:           Verdana, Geneva, sans-serif;
 $lucida-grande:     'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+$montserrat:        'Montserrat', $helvetica;
 
 // 2.2. Vertical rhythm
 //------------------------------------------------------------------------------
@@ -78,8 +79,8 @@ $micro-size:        $base-font-size/1.5;
 // =============================================================================
 $white: #fff;
 $black: #000;
-$bg-color: #ebebeb;
-$font-color: #321321;
+$bg-color: $white;
+$font-color: #555;
 $headings-color: #000;
 $dropcap-color: #999;
 $border-color: #f6303e;
