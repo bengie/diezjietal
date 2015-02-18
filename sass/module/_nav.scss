@@ -1,5 +1,5 @@
 .nav {
-	@include span-columns(2 omega, $total-columns);
+	// @include span-columns(2 omega, $total-columns);
 	font-family: $helvetica;
 	ul {
 		@include pie-clearfix;
@@ -8,7 +8,7 @@
 		list-style: none;
 	}
 	li {
-		@include span-columns(1, ($total-columns - 1));
+		// @include span-columns(1, ($total-columns - 1));
 		padding-top: 1.1em;
 		font-size: 1.5em;
 		font-weight: bold;
@@ -20,7 +20,7 @@
 			}
 		}
 		&.last {
-			@include omega;
+			// @include omega;
 		}
 		@media (max-width: $bp2) {
 			padding-top: 2.65em;

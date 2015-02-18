@@ -33,21 +33,20 @@ module.exports = function(grunt) {
         dest: '<%= path.jsDist %>/main.min.js'
       }
     },
-    compass: {
+    sass: {
       dist: {
           options: {
-              httpPath: '/',
-              cssDir: '<%= path.css %>',
-              sassDir: '<%= path.sass %>',
-              imagesDir: '<%= path.img %>',
-              javascriptsDir: '<%= path.js %>',
-              outputStyle: 'compressed', // change to `compressed` for production - `expanded` for dev
-              environment: 'production', // change to `production` for production - `development` for dev
-              relativeAssets: true,
-              noLineComments: false, // change to `true` for production
-              trace: true,
-              require: 'susy' // load Compass plugins
-          }
+            style: 'nested', // nested | compact | compressed | expanded
+            lineNumbers: true,
+            debugInfo: true
+          },
+          files: [{
+            expand: true,
+            cwd: '<%= path.sass %>',
+            src: ['*.scss'],
+            dest: '<%= path.css %>',
+            ext: '.css'
+          }]
       }
     },
     jekyll: {
@@ -97,7 +96,7 @@ module.exports = function(grunt) {
         options: { livereload: false },
         compass: {
             files: ['<%= path.sass %>/*.scss','<%= path.sass %>/**/*.scss'],
-            tasks: ['compass']
+            tasks: ['sass']
         }
 
     }
@@ -106,7 +105,7 @@ module.exports = function(grunt) {
   // Do the necessary tasks
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   // grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -119,7 +118,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     // jekyll needs to be run in the background else it blocks the terminal
     'bgShell:jekyll',
-    'compass',
+    'sass',
     // 'uglify',
     // 'concat',
     'watch'
@@ -127,7 +126,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('draft', [
       'bgShell:jekylldraft',
-      'compass',
+      'sass',
       // 'uglify',
       // 'concat',
       'watch'

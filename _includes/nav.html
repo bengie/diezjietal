@@ -1,7 +1,6 @@
 <nav class="nav" role="navigation">
-	<ul>
-		<!-- <li><a href="/">Home</a></li> -->
-		<li {% if page.url contains 'projects'%}class="current" aria-selected="true"{% else %}aria-selected="false"{% endif %} ><a href="/projects">Projects</a></li>
-		<li class="last {% if page.url contains 'blog'%}current{%endif%}" {% if page.url contains 'blog'%}aria-selected="true"{% else %}aria-selected="false"{% endif %}><a href="/blog">Blog</a></li>
+	<ul class="nav__list">
+		<li class="nav__item first {% if page.url contains 'projects'%}current{% endif%}" {% if page.url contains 'projects'%}aria-selected="true"{% else %}aria-selected="false"{% endif %} ><a href="/projects" class="nav__link">Projects</a></li>
+		<li class="nav__item last {% if page.url contains 'blog'%}current{%endif%}" {% if page.url contains 'blog'%}aria-selected="true"{% else %}aria-selected="false"{% endif %}><a href="/blog" class="nav__link">Blog</a></li>
 	</ul>
 </nav>

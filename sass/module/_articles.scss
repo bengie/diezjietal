@@ -5,10 +5,10 @@ article {
 
 .article--teaser {
 	.article__body {
-		@include span-columns(1 omega,$total-columns);
+		// @include span-columns(1 omega,$total-columns);
 	}
 	figure {
-		@include span-columns(2,$total-columns);
+		// @include span-columns(2,$total-columns);
 	}
 	@media (max-width: $bp2) {
 		.article__body,
@@ -23,18 +23,18 @@ article {
 .article--full {
 	.article__meta {
 		text-align: right;
-		@include span-columns(1,$total-columns);
+		// @include span-columns(1,$total-columns);
 			padding-top: 59px;
 		dl {
 			margin-top: 0;
 		}
 	}
 	h1 {
-		@include span-columns(2 omega,$total-columns);
+		// @include span-columns(2 omega,$total-columns);
 	}
 	.article__body {
-		@include pre(1);
-		@include span-columns(2 omega,$total-columns);
+		// @include pre(1);
+		// @include span-columns(2 omega,$total-columns);
 		text-align: justify;
 		&.no--pre {
 			margin-left: 0;

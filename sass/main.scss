@@ -6,11 +6,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-@import "compass";
+// @import "compass";
 
 // Responsive grids for Compass
 // http://susy.oddbird.net/
-@import "susyone";
+// @import "susyone";
 
 //  We  use the SMACSS approach
 // SMACSS = Scalable and Modular Architecture for CSS
@@ -29,19 +29,13 @@
 
 
 @import "site-settings";
+@import "mixins";
 
-@import "base/normalize";
-@import "base/defaults";
-@import "base/typography";
-@import "base/syntax";
+@import "base/base";
 
-@import "layout/scaffolding";
 
-@import "module/nav";
-@import "module/articles";
-@import "module/archive";
-@import "module/disqus";
-@import "module/island";
-@import "module/banner";
+@import "layout/layout";
+
+@import "module/module";
 
 // @import "dev";

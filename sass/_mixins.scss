@@ -1,0 +1,26 @@
+// =============================================================================
+// BOX-SIZING
+// =============================================================================
+// http://compass-style.org/reference/compass/css3/box_sizing/
+@mixin box-sizing($bs) {
+	$bs: unquote($bs);
+	-webkit-box-sizing: $bs;
+	-moz-box-sizing: $bs;
+	box-sizing:$bs;
+}
+
+
+// =============================================================================
+// We use this to do clear floats (http://foundation.zurb.com/docs/components/global.html)
+// =============================================================================
+
+@mixin pie-clearfix {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}

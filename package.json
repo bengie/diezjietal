@@ -5,16 +5,17 @@
   "author": "Gregory Van Looy",
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-bg-shell": "~2.0.1",
+    "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-compass": "~0.2.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-jekyll": "~0.3.6",
-    "grunt-contrib-watch": "~0.4.4",
-    "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-livereload": "~0.1.2",
-    "grunt-bg-shell": "~2.0.1",
-    "grunt-imageoptim": "~1.2.6"
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-imageoptim": "~1.2.6",
+    "grunt-jekyll": "~0.3.6"
   }
 }
