@@ -1,0 +1,10 @@
+// =============================================================================
+// CLEARFIX
+//
+// helper class to fix floating issues
+// Based on @necolas's micro clearfix
+// =============================================================================
+
+.clearfix {
+	@include clearfix;
+}

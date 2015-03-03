@@ -1,5 +1,47 @@
-name: Diezjietal
-highlighter: true
-exclude: [config.rb, sass, package.json, node_modules, Gruntfile.js, drafts]
-markdown: kramdown
-excerpt_separator: "" # Workaround for http://blog.slaks.net/2013-08-09/jekyll-tag-was-never-closed
+# Site settings
+title:       Diezjietal
+email:       greg@diezjietal.be
+author:      Gregory Van Looy
+description: "Diezjietal is a freelance html and css architect and consultant"
+baseurl:     ""
+url:         "http://diezjietal.be"
+
+# Google analytics
+google_analytics: UA-7640477-2
+
+# Optional features
+animated:           false
+show_related_posts: false
+show_post_footers:  false
+
+# Disqus post comments
+# (leave blank to disable Disqus)
+disqus_shortname: dzjtl
+
+# Social icons
+show_social_icons: true
+github_username: bengie
+stackoverflow_id:
+twitter_username: bengie
+google_plus_id:
+instagram_id: bengie
+strava_id:
+garmin_connect_id:
+linkedin_username: diezjietal
+bitcoin_url:
+paypal_url:
+flattr_button:
+
+# Build settings
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:    date
+paginate:     3
+paginate_path: "/blog/page:num/"
+exclude: ['contact.html', 'node_modules', 'gulpfile.js', 'package.json', 'images']
+sass:
+  style: :compressed
+gems:
+  - jekyll-sitemap
+highlight: true

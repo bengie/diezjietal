@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diezjietal</title>
+    <description>Diezjietal is a freelance html and css architect and consultant</description>
+    <link>http://diezjietal.be/</link>
+    <atom:link href="http://diezjietal.be/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Iconfonts: The how&#39;s and why&#39;s</title>
+        <description>&lt;h2 id=&quot;clarification&quot;&gt;Clarification&lt;/h2&gt;
+
+&lt;p&gt;Icon fonts (.woff, .eot, .svg, .ttf,…) are vector based and thus are lossless scalable, extra sharp on retina displays and relatively small file size&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Browsers consider it text, so the icons are anti-aliased as such. Can lead to icons not being as sharp as you might expect.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;They will give sharp results &lt;strong&gt;if you obey the following rules&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;grid-size&quot;&gt;Grid size&lt;/h2&gt;
+
+&lt;p&gt;If you design your own icons or want to extend an existing font pack with custom designed icons, you will have to make sure both are designed on the same grid (or ‘canvas’ to use Illustrator slang) dimensions. E.g. a square canvas of 14x14, 16x16, 20x20, …. You may not mix different grid sizes in your icons or mix icon packs with different grid sizes. On &lt;a href=&quot;https://icomoon.io/app/#/select/library&quot;&gt;Icomoon’s library&lt;/a&gt; you can see the grid size on which the entire icon pack is designed.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/icon-grid-size.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Grid sizes matter for the (vertical) alignment and the actual rendered sizes of the icon.&lt;/p&gt;
+
+&lt;p&gt;Let’s give an example: Typical footer from an undisclosed site …&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/footer.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;If we got the paperclip (Archief) icon from a 14x14 grid size icon pack (like FontAwesome) and the newspaper (digikrant) icon from a 20x20 grid size icon pack (like Entypo) and our base font-size is 16px based. Both icons will be rendered at a non-optimal size for their grid size.
+16px base : paperclip icon gets scaled up with 114.28% and newspaper icon gets scaled down to 80%. That’s when you get ‘blurry’ icons. We don’t want that.
+Also the vertical alignment could be off based on how they were set in the icon pack. So if we would need to make both icons have crispy sharp edges we need to write extra CSS and very specific CSS for that icon on that location in the footer. That’s something we want to avoid at all cost. We are building modular projects remember. Also the newspaper icon would be bigger than the paperclip icon and that’s not the result we want.&lt;/p&gt;
+
+&lt;h2 id=&quot;font-size&quot;&gt;Font-size&lt;/h2&gt;
+
+&lt;p&gt;These days web projects mostly use a 16px base font-size so we are better of using icons that are based on that same number. A 16x16 grid size icon pack (like Icomoon Free, Icomoon Ultimate and many others) is the best decision. Now if you start scaling the icons with &lt;code&gt;font-size: 2em;&lt;/code&gt; you will get crispy results and it will be easier to align it vertically.&lt;/p&gt;
+
+&lt;p&gt;Excerpt from icomoon.io documentation&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Font Metrics&lt;/p&gt;
+
+  &lt;p&gt;You can set the baseline and the em size (size of the em square) of your font using the IcoMoon app. The height of the baseline is determined as a percentage of the em size.&lt;/p&gt;
+
+  &lt;p&gt;The IcoMoon app aligns the top of the icon canvas to the ascender line and its bottom to the descender line of the font. Using this technique, the size of your font will directly translate to the size of the icon. For example, if you set your font-size in CSS to be 16px, you will get a 16px icon. This method was first introduced by IcoMoon.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;so-why-are-there-still-other-grid-size-icon-packs&quot;&gt;So why are there still other grid size icon packs?&lt;/h3&gt;
+
+&lt;p&gt;Some icon packs are designed for specific reasons, e.g. to serve in the navigation of an Admin section. If the designer knows the font-size in the header is 20px based, then it’s better to use a 20x20 grid size icon pack.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-are-my-icons-blurry&quot;&gt;Why are my icons blurry?&lt;/h3&gt;
+
+&lt;p&gt;The icon font is vector based so you can scale it without any degradation but your screen is pixel based. If you scale down, e.g. &lt;code&gt;font-size: 0.66em;&lt;/code&gt; , the vectors will fall between 2 pixels instead of right on the pixel. This will result in antialiasing (because your browser treats it as text) and sub-pixel rendering of your graphics card and screen giving you blurry edges.  Same if you size up, e.g. &lt;code&gt;font-size: 1.33em;&lt;/code&gt; If you use multiples of 16 (32, 48, ….) you get better results. Retina screens, like iPhone, give crispier results, even on those odd font-sizes, because they simply have more pixels.&lt;/p&gt;
+
+&lt;p&gt;Excerpt from the icomoon.io documentation&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Getting Crisp Results&lt;/p&gt;
+
+  &lt;p&gt;Icon fonts have a bad reputation of looking blurred. But as you can see in the UI of this website (icomoon.io), it is possible to get completely sharp and crisp results.&lt;/p&gt;
+
+  &lt;p&gt;To get crisp results, the IcoMoon app should know the grid size of the icons you’re choosing. You don’t need to worry about grid sizes when using icons from IcoMoon’s library. But if you’re importing your own SVGs, you need to set the grid size manually. You can do so using the edit panel. To bring up the edit panel, click on the pencil button and then click on an icon. You can also use the menu on top right of each icon set to reset all grid sizes in that set.&lt;/p&gt;
+
+  &lt;p&gt;Notice: Don’t change the grid size of the icons imported from IcoMoon’s library. They already have the correct grid size set for them.&lt;/p&gt;
+
+  &lt;p&gt;When in the font tab of the IcoMoon app, your icons will be grouped by their grid sizes. To get the best results, you should use this size when using your font. For example, if an icon set is optimized for (16 × N)px sizes, you will get crisp results by setting your font-size to 16px, 32px, 48px (= 3 × 16px), etc. Also note that by using &lt;code&gt;-webkit-font-smoothing: antialiased;&lt;/code&gt; in your CSS, or by prioritizing the SVG font over other formats, you can get better results.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;so-why-are-we-still-using-iconfonts&quot;&gt;So why are we still using iconfonts?&lt;/h3&gt;
+
+&lt;p&gt;In short: to avoid http requests. If we start using png’s again (even when we ‘sprite’ them) we will need to use a lot more http requests and we all know http requests are the bottleneck for web performance and are the most expensive (for the client) when it comes to bandwidth. Also you don’t need to maintain a gazillion icons when something changes or you need an icon in another size.&lt;/p&gt;
+
+&lt;p&gt;Also file size will be way lower in comparison to using sprites.&lt;/p&gt;
+
+&lt;p&gt;Last but not least, you serve multiple file types (eot, woff, svg, …) so you give the browser the opportunity to choose which file type is better to suit its needs.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;We want the best result and icon fonts can give us that result if you use an icon pack with a grid size corresponding the base font size.&lt;/p&gt;
+
+&lt;h2 id=&quot;testcase&quot;&gt;Testcase&lt;/h2&gt;
+
+&lt;p&gt;On IcoMoon I created a new project and added &lt;strong&gt;Entypo&lt;/strong&gt; font to it. Entypo is a 20x20 grid based font.
+I also created another project and added &lt;strong&gt;Icomoon Ultimate&lt;/strong&gt; to it. A 16x16 grid based icon font.&lt;/p&gt;
+
+&lt;p&gt;I created 4 testcases:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Entypo and a base font-size of 20px&lt;/li&gt;
+  &lt;li&gt;Entypo and a base font-size of 16px&lt;/li&gt;
+  &lt;li&gt;Icomoon Ultimate and a base font-size of 16px&lt;/li&gt;
+  &lt;li&gt;Icomoon Ultimate and a base font-size of 20px&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I used Entypo (20x20) and a base font-size of 20px&lt;br /&gt;
+&lt;strong&gt;Result&lt;/strong&gt;: &lt;span class=&quot;success&quot;&gt;crisp&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/entypo-crisp.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I used Entypo (20x20) on a base font-size of 16px&lt;br /&gt;
+&lt;strong&gt;Result&lt;/strong&gt;: &lt;span class=&quot;error&quot;&gt;blurry&lt;/span&gt; - look at icon-classic-computer&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/entypo-blurry.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I used Icomoon Ultimate (16x16) and a base font-size of 16px&lt;br /&gt;
+&lt;strong&gt;Result&lt;/strong&gt;: &lt;span class=&quot;success&quot;&gt;crisp&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/ultimate-crisp.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I used Icomoon Ultimate (16x16) on a base font-size of 20px&lt;br /&gt;
+&lt;strong&gt;Result&lt;/strong&gt;: &lt;span class=&quot;error&quot;&gt;blurry edges&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/ultimate-blurry.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;credits&quot;&gt;Credits&lt;/h3&gt;
+
+&lt;p&gt;I originally wrote this blog post for the in-house teams (development and design) and contractors of De Persgroep Publishing on the company’s intranet. Kudos to them for allowing me to share this blog post with the community.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Mar 2015 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/blog/2015/03/02/iconfonts-the-hows-and-whys.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2015/03/02/iconfonts-the-hows-and-whys.html</guid>
+      </item>
+    
+      <item>
+        <title>De Morgen Plus</title>
+        <description>&lt;figure&gt;
+	&lt;img src=&quot;/img/demorgen-plus.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;While I was a part of the front-end team of De Persgroep Publishing one of the projects we were assigned to in 2014 was the total revamp for &lt;a href=&quot;http://demorgen.be&quot;&gt;De Morgen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Both the newspaper and the website got a new look and for the website there were extra challenges as integrating a new paywall model and making it 100% responsive.&lt;/p&gt;
+
+&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;De Morgen Plus wasn’t our first project with our new architectural setup for front-end projects.
+The foundation for our setup was based on our experiences with the &lt;a href=&quot;/projects/2015/02/23/volkskrant-plus.html&quot;&gt;Volkskrant Plus&lt;/a&gt; and &lt;a href=&quot;/projects/2015/02/22/hln-regio.html&quot;&gt;HLN Regio&lt;/a&gt; projects.&lt;/p&gt;
+
+&lt;h3 id=&quot;html-and-css&quot;&gt;HTML and CSS&lt;/h3&gt;
+
+&lt;p&gt;The HTML is written in the Java template engine &lt;a href=&quot;http://www.thymeleaf.org/&quot;&gt;Thymeleaf&lt;/a&gt;. This way we, as front-end developers, have more control over the output and we can skip a great part of prototyping in static HTML files.&lt;/p&gt;
+
+&lt;p&gt;Our CSS approach is a combination of a modular architecture with &lt;a href=&quot;https://smacss.com/&quot;&gt;Smacss&lt;/a&gt;, &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;BEM&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
+
+&lt;p&gt;“F*$k jQuery” is our motto. Not that we don’t like &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt;, we just think it bloats our codebase because a lot of what it contains we don’t use at all and because of all the custom development we have to do. We use microframeworks like &lt;a href=&quot;https://github.com/ded/bonzo&quot;&gt;Bonzo&lt;/a&gt; and &lt;a href=&quot;https://github.com/ded/qwery&quot;&gt;Qwery&lt;/a&gt; to handle any cross-browser issues and to simplify the way we write JS. We already have our own custom library which we can use across various projects.&lt;/p&gt;
+
+&lt;h3 id=&quot;automation&quot;&gt;Automation&lt;/h3&gt;
+
+&lt;p&gt;We initially used &lt;a href=&quot;http://gruntjs.com&quot;&gt;Grunt&lt;/a&gt; to automate everything (build process, code hinting/linting for JS and Sass) but not long ago we switched to &lt;a href=&quot;http://gulpjs.com&quot;&gt;Gulp&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;honors--awards&quot;&gt;Honors &amp;amp; awards&lt;/h2&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/merit-awards-2014.jpg&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;The front-end team responsible for the 2014 De Morgen redesign&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;January 2015 “de Morgen” was elected as “Medium of the year” on the Merit Awards.
+More info &lt;a href=&quot;http://www.mm.be/news-nl-7835-merit-awards-de-morgen-medium-van-het-jaar-the-reasons-why&quot;&gt;here&lt;/a&gt; &lt;em&gt;(Dutch)&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 Feb 2015 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/projects/2015/02/24/de-morgen-plus.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/projects/2015/02/24/de-morgen-plus.html</guid>
+      </item>
+    
+      <item>
+        <title>Volkskrant Plus</title>
+        <description>&lt;figure&gt;
+	&lt;img src=&quot;/img/volkskrant-plus.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;My very first large project for De Persgroep Publishing was the total revamp for &lt;a href=&quot;http://volkskrant.nl&quot;&gt;de Volkskrant&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The website got a new look and there were extra challenges as integrating a new paywall model and making it 100% responsive.&lt;/p&gt;
+
+&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;De Volkskrant Plus was our first project with our new architectural setup for front-end projects.&lt;/p&gt;
+
+&lt;h3 id=&quot;css&quot;&gt;CSS&lt;/h3&gt;
+
+&lt;p&gt;Our CSS approach is a combination of a modular architecture with &lt;a href=&quot;https://smacss.com/&quot;&gt;Smacss&lt;/a&gt;, &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;BEM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Directory structure of our CSS files:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____mixins.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____print.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____site-settings.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____base
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____base.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____defaults.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____extends.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____helpers.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____normalize.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____webfonts.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____layout
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____grid.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____layout.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____layouts.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____sections.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____main-old-ie.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____main.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____modules
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____about.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____actionbar.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____actions.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____advertising.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____advertorial.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____alert.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____ampersand.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____anchor.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____ankeilers.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____articles.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____author.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____badges.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____banner.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____blender.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____block-grid.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____blockquotes.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____breadcrumb.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____breaking-toast.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____buttons.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____calendar.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____carousel.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____center.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____check.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____cluster.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____component.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____cookiewall.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____counter.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____datepicker.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____deals.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____dividers.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____dropdown.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____event-info.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____favs.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____flex-embed.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____forms.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____gidsend.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____headers.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____hyper-distribution.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____iconfont.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____icons.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____identity.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____images.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____ingredient.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____integration.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____intermediair.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____island.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____labels.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____landmark.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____letters.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____lightbox.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____lists.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____marketing.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____matrix.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____media-overlay.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____meta.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____modal.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____modules.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____nav.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____outside-of-the-box.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____pagination.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____paywall.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____peekaboo.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____photo-sets.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____pillow.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____pills.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____poll.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____progress.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____pullout.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____rating.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____reactions.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____reveal.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____ribbon.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____slideshow.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____snippet.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____social-media.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____stamps.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____steps.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____story-stream.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____subarticle.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____tables.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____tabs.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____tags.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____toggle.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____toggler.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____tooltip.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____ux.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____video.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____weather.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____well.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____widgets.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____modules_sso
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____alerts.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____buttons.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____forms.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____grid.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____icons.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____modules_sso.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____products.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____sso-settings.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____tabs.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____states
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____states.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____styleguide.md
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;____theme
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____development.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-advertorial.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-cult.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-didu.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-economy.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-integration.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-myvk.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-opinion.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-science.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-sports.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-sso.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-tech.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme-user.scss
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;_____theme.scss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
+
+&lt;p&gt;“F*$k jQuery” is our motto. Not that we don’t like &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt;, we just think it bloats our codebase because a lot of what it contains we don’t use at all and because of all the custom development we have to do. We use microframeworks like &lt;a href=&quot;https://github.com/ded/bonzo&quot;&gt;Bonzo&lt;/a&gt; and &lt;a href=&quot;https://github.com/ded/qwery&quot;&gt;Qwery&lt;/a&gt; to handle any cross-browser issues and to simplify the way we write JS. We already have our own custom library which we can use across various projects.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Feb 2015 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/projects/2015/02/23/volkskrant-plus.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/projects/2015/02/23/volkskrant-plus.html</guid>
+      </item>
+    
+      <item>
+        <title>HLN Regio</title>
+        <description>&lt;figure&gt;
+	&lt;img src=&quot;/img/hln-regio.png&quot; alt=&quot;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;My second project for De Persgroep publishing was a spin-off site of the current &lt;a href=&quot;http://hln.be&quot;&gt;HLN.be&lt;/a&gt; site. Filled with regional news and content uploaded by its users (UGC = User Generated Content). For the first release it was never the intention to make it responsive. This probably will be for a later phase. The way we built this site allows for for a minimum of effort to make it responsive.&lt;/p&gt;
+
+&lt;h3 id=&quot;css&quot;&gt;CSS&lt;/h3&gt;
+
+&lt;p&gt;Our CSS approach is a combination of a modular architecture with &lt;a href=&quot;https://smacss.com/&quot;&gt;Smacss&lt;/a&gt;, &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt; and &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;BEM&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;k&quot;&gt;@charset&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;DO&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;REMOVE&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;charset&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;old&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Firefox&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;needs&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;this&lt;/span&gt;
+
+
+&lt;span class=&quot;o&quot;&gt;////////////////////////////////////////////////////////////////////////////////&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;MAIN&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.SCSS&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;partials&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;here&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;////////////////////////////////////////////////////////////////////////////////&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;We&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;SMACSS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;approach&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;SMACSS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Scalable&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Modular&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Architecture&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;CSS&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;smacss&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;At&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;very&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;core&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;SMACSS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;categorization&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;By&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;categorizing&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;CSS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;begin&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;see&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;patterns&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;better&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;practices&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;around&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;these&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;patterns&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;There&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;five&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;types&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Base&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Layout&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Module&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;State&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Theme&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;site-settings&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mixins&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;base/base&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;layout/layout&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;modules/modules&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;states/states&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;theme/theme&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
+
+&lt;p&gt;“F*$k jQuery” is our motto. Not that we don’t like &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt;, we just think it bloats our codebase because a lot of what it contains we don’t use at all and because of all the custom development we have to do. We use microframeworks like &lt;a href=&quot;https://github.com/ded/bonzo&quot;&gt;Bonzo&lt;/a&gt; and &lt;a href=&quot;https://github.com/ded/qwery&quot;&gt;Qwery&lt;/a&gt; to handle any cross-browser issues and to simplify the way we write JS. We already have our own custom library which we can use across various projects.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Feb 2015 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/projects/2015/02/22/hln-regio.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/projects/2015/02/22/hln-regio.html</guid>
+      </item>
+    
+      <item>
+        <title>Image Optimising with Gulp</title>
+        <description>&lt;p&gt;We care about web performance but we &lt;del&gt;always&lt;/del&gt; &lt;em&gt;often&lt;/em&gt; forget to minimize our image assets. We can save upto 40% or more on those assets. This can be automated with certain apps or automated through a JS Task managers like &lt;a href=&quot;http://gulpjs.com/&quot;&gt;Gulp.js&lt;/a&gt; or &lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt.js&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For this blogpost I use &lt;strong&gt;Gulp&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pick-the-best-plugin&quot;&gt;Pick the best plugin&lt;/h2&gt;
+
+&lt;p&gt;I found two candidates. &lt;em&gt;If I missed any, please place a comment below.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/gulp-imagemin&quot;&gt;gulp-imagemin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/gulp-smushit&quot;&gt;gulp-smushit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My testcase setup was as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a folder with the original images ( 1 .jpg and 1 .png)&lt;/li&gt;
+  &lt;li&gt;separate destination folders for the optimised images&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our test images … both resized and optimised for this blog post …&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col--half&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/salomon.jpg&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;The JPG, 1928x1928 ~ 1.5 MB&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col--half omega&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/shark9.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;The PNG, 1082x610 ~ 85 KB&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;My &lt;code&gt;gulpfile.js&lt;/code&gt; config&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imagemin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-imagemin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;smushit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-smushit&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;img/*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imagemin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;progressive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin-img&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;img/*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;smushit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit-img&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gulp-imagemin&quot;&gt;gulp-imagemin&lt;/h3&gt;
+
+&lt;p&gt;Minify PNG, JPEG, GIF and SVG images&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a lot of configurable options&lt;/li&gt;
+  &lt;li&gt;you can include other optimizing plugins, like &lt;a href=&quot;https://www.npmjs.com/package/imagemin-pngquant&quot;&gt;pngquant&lt;/a&gt; &lt;em&gt;(see code example below)&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;can handle all image formats&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no &lt;code&gt;verbose&lt;/code&gt; option for the output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;gulpfile.js&lt;/code&gt; with &lt;strong&gt;pngquant&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imagemin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-imagemin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;pngquant&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin-pngquant&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;img/*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imagemin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;progressive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pngquant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin-img&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With &lt;strong&gt;pngquant enabled&lt;/strong&gt; we save extra bytes on PNG files: 203.79 kB vs. 164.67 kB  (12.9% vs 10.4%) and you don’t notice any quality loss in the asset.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# with pngquant&lt;/span&gt;
+➜  optim  gulp imagemin
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:07:37&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Using gulpfile /Applications/MAMP/htdocs/POC/optim/gulpfile.js
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:07:37&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Starting &lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt;...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:07:38&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-imagemin: Minified &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; images &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;saved 203.79 kB - 12.9%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:07:38&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Finished &lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt; after 1.07 s
+
+&lt;span class=&quot;c&quot;&gt;# without pngquant&lt;/span&gt;
+➜  optim  gulp imagemin
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;11:10:05&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Using gulpfile /Applications/MAMP/htdocs/POC/optim/gulpfile.js
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;11:10:05&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Starting &lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt;...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;11:10:06&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-imagemin: Minified &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; images &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;saved 164.67 kB - 10.4%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;11:10:06&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Finished &lt;span class=&quot;s1&quot;&gt;&amp;#39;imagemin&amp;#39;&lt;/span&gt; after &lt;span class=&quot;m&quot;&gt;835&lt;/span&gt; ms&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gulp-smushit&quot;&gt;gulp-smushit&lt;/h3&gt;
+
+&lt;p&gt;Plugin to optimize PNG and JPG using Yahoo Smushit. &lt;a href=&quot;http://smush.it/&quot;&gt;Smush.it&lt;/a&gt; uses optimization techniques specific to image format to remove unnecessary bytes from image files. It is a “lossless” tool, which means it optimizes the images without changing their look or visual quality.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Easy to configure&lt;/li&gt;
+  &lt;li&gt;Plug ‘n’ play&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Only for jpg and png&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;smushit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-smushit&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;img/*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;smushit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit-img&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Verbose output in the terminal&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;➜  optim  gulp smushit
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:47&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Using gulpfile /Applications/MAMP/htdocs/POC/optim/gulpfile.js
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:47&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Starting &lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit&amp;#39;&lt;/span&gt;...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:51&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; /Applications/MAMP/htdocs/POC/optim/img/salomon.jpg
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:51&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-smushit: Compress rate % 8.60
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:51&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-smushit: &lt;span class=&quot;m&quot;&gt;1491876&lt;/span&gt; bytes  to   &lt;span class=&quot;m&quot;&gt;1363503&lt;/span&gt; bytes
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:54&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; /Applications/MAMP/htdocs/POC/optim/img/shark9.png
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:54&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-smushit: Compress rate % 19.56
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:54&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; gulp-smushit: &lt;span class=&quot;m&quot;&gt;84576&lt;/span&gt; bytes  to   &lt;span class=&quot;m&quot;&gt;68034&lt;/span&gt; bytes
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10:37:54&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Finished &lt;span class=&quot;s1&quot;&gt;&amp;#39;smushit&amp;#39;&lt;/span&gt; after 7.16 s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comparison&quot;&gt;Comparison&lt;/h2&gt;
+
+&lt;p&gt;They both compress almost equally (see below) with &lt;strong&gt;imagemin&lt;/strong&gt; coming in first place.&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col--half&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/salomon-imagemin.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;jpg compressed with imagemin&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col--half omega&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/salomon-smushit.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;jpg compressed with smushit&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col--half&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/shark-imagemin.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;png compressed with imagemin&lt;/figcaption&gt;
+        &lt;/figure&gt;
+
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/shark9-imagemin-pngquant.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;png compressed with imagemin and pngquant&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col--half omega&quot;&gt;
+        &lt;figure&gt;
+            &lt;img src=&quot;/img/shark-smushit.png&quot; alt=&quot;&quot; /&gt;
+            &lt;figcaption&gt;png compressed with smushit&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;crunching-the-numbers-&quot;&gt;Crunching the numbers …&lt;/h3&gt;
+
+&lt;table class=&quot;table table--bordered&quot;&gt;
+    &lt;thead class=&quot;table__head&quot;&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;original&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Imagemin&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Smushit&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody class=&quot;table__body&quot;&gt;
+        &lt;tr&gt;
+            &lt;td scope=&quot;row&quot;&gt;JPG&lt;/td&gt;
+            &lt;td&gt;1.491.876 bytes (1.5MB)&lt;/td&gt;
+            &lt;td&gt;1.344.231 bytes (1.3MB)&lt;/td&gt;
+            &lt;td&gt;1.363.503 bytes (1.4MB)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td scope=&quot;row&quot;&gt;PNG&lt;/td&gt;
+            &lt;td&gt;84.576 bytes (85KB)&lt;/td&gt;
+            &lt;td&gt;67.550 bytes (68kb)&lt;br /&gt;
+                &lt;strong&gt;28.428 bytes (28KB) with pngquant&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;68.034 bytes (68KB)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td scope=&quot;row&quot;&gt;Time&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;835ms or &lt;strong&gt;1.07s&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;7.16s&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;And we have a winner: &lt;a href=&quot;https://www.npmjs.com/package/gulp-imagemin&quot;&gt;gulp-imagemin&lt;/a&gt; !!!!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;more options and extendable&lt;/li&gt;
+  &lt;li&gt;more image formats supported&lt;/li&gt;
+  &lt;li&gt;better compression&lt;/li&gt;
+  &lt;li&gt;faster&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;credits&quot;&gt;Credits&lt;/h3&gt;
+
+&lt;p&gt;I originally wrote this Proof of Concept for the in-house teams of De Persgroep Publishing on the company’s intranet. Kudos to them for allowing me to share this blog post with the community.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 18 Feb 2015 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/blog/2015/02/18/image-optimizers.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2015/02/18/image-optimizers.html</guid>
+      </item>
+    
+      <item>
+        <title>Stop with the over-design</title>
+        <description>&lt;h2 id=&quot;just-stop-it&quot;&gt;Just stop it!&lt;/h2&gt;
+
+&lt;p&gt;Just to make things clear, I’m a fan of &lt;cite&gt;Design Without Limitations&lt;/cite&gt;. Hell yeah, I used to have this quote as a background on my computer back in the days I was a designer, but never, ever did I design something that could have resulted in bad code.&lt;/p&gt;
+
+&lt;p&gt;As a designer you want to give your users a &lt;del&gt;good&lt;/del&gt; &lt;ins&gt;perfect&lt;/ins&gt; experience on the website. You start designing and tweaking. These days with &lt;a href=&quot;http://alistapart.com/article/responsive-web-design/&quot;&gt;Responsive Web Design&lt;/a&gt; you have a lot to design and tweak. There are desktops, tablets, smartphones and who knows what else the future may bring us. But if you start redesigning &lt;em&gt;every&lt;/em&gt; breakpoint, moving stuff around and hiding/showing content, you are lost my brother. A simple example: &lt;a href=&quot;http://getbootstrap.com/javascript/#tabs&quot;&gt;Tabs&lt;/a&gt; can’t just magically turn into &lt;a href=&quot;http://getbootstrap.com/javascript/#collapse&quot;&gt;accordions&lt;/a&gt; when you switch breakpoints. They both require a completely different HTML structure. Back to the drawing board, my young padawan.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Dieter_Rams&quot;&gt;A wise man&lt;/a&gt; once said : &lt;cite&gt;Good design is as little design as possible.&lt;/cite&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;performance-matters&quot;&gt;Performance matters&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Just because we can do something doesn’t mean we should.&lt;/p&gt;
+
+  &lt;p&gt;&lt;cite&gt;Jurassic Park&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;CSS3 brought us many goodies like rounded corners, shadows, gradients, animations and much more, but they come at a price. And that price is &lt;strong&gt;performance&lt;/strong&gt;. We can create that subtle shadow around your box a lot easier now, but giving all your boxes shadows can make your FPS plummet and make your shiny UI unusable.&lt;/p&gt;
+
+&lt;p&gt;Adding all those fancy &lt;a href=&quot;http://bradfrost.github.io/this-is-responsive/patterns.html&quot;&gt;Responsive patterns&lt;/a&gt; and &lt;a href=&quot;http://usejquery.com/&quot;&gt;JS plugins&lt;/a&gt; may seem a great idea but they quickly turn your website in a slow monster&lt;sup&gt;*&lt;/sup&gt;. And hey, what’s the use of designing that great UI if your user will never see it because he already left your site?&lt;/p&gt;
+
+&lt;p&gt;So make a decision on what features you really want and start designing for those you need to drop. Because designing is all about finding solutions for a certain problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-fix-this&quot;&gt;How to fix this?&lt;/h2&gt;
+
+&lt;p&gt;It’s easy. &lt;strong&gt;Designers should learn to code!&lt;/strong&gt; I don’t mean hardcore development or advanced JavaScript but basic understanding of modular and scalable HTML and CSS. you don’t even have to write it but just get familiar with, and most of all, learn from frameworkslike &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; or &lt;a href=&quot;http://foundation.zurb.com/&quot;&gt;Foundation&lt;/a&gt;. Read up on
+&lt;a href=&quot;http://smacss.com/&quot;&gt;SMACSS&lt;/a&gt; and &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;BEM&lt;/a&gt;. Go and talk with the front-ender(s) in your company.&lt;/p&gt;
+
+&lt;p&gt;Basically it comes down to stop seeing your website as pages, and design each page separately, but see them as containers that hold different building blocks. No matter the page it’s on, that block will always look and behave the same.&lt;/p&gt;
+
+&lt;p&gt;Maybe it’s a bit out of your comfort zone and you probably already have a lot on your hands to keep up with current design standards but this will help us both (you as a designers, we as front-enders) a lot. You will learn to understand why we say “NO” each time you come up with that fancy gimmick in your UI. I promise you when you write a blog post about why it’s important to have that feature I will read it and I will listen to your arguments.&lt;/p&gt;
+
+&lt;h4 id=&quot;something-to-read&quot;&gt;* Something to read:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/&quot;&gt;Painting pixels&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/speed/scrolling/&quot;&gt;Scrolling performance&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 04 Feb 2014 00:00:00 +0100</pubDate>
+        <link>http://diezjietal.be/blog/2014/02/04/stop-with-the-overdesign.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2014/02/04/stop-with-the-overdesign.html</guid>
+      </item>
+    
+      <item>
+        <title>Harry Roberts can read my mind</title>
+        <description>&lt;p&gt;I was planning to write a presentation on modular design for designers until I bumped into these slides from a presentation by Harry Roberts (&lt;a href=&quot;http://twitter.com/csswizardry&quot;&gt;@csswizardry&lt;/a&gt;). I couldn’t agree more with this. So jealous that I didn’t write this. &lt;a href=&quot;https://speakerdeck.com/csswizardry/normalising-designs-for-better-quality-css&quot;&gt;Direct link&lt;/a&gt;&lt;/p&gt;
+
+&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;46174430fcdd0130a20e72d5a4813b02&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Wed, 18 Sep 2013 00:00:00 +0200</pubDate>
+        <link>http://diezjietal.be/blog/2013/09/18/Harry-Roberts-can-read-my-mind.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2013/09/18/Harry-Roberts-can-read-my-mind.html</guid>
+      </item>
+    
+      <item>
+        <title>Some kind of workflow</title>
+        <description>&lt;article class=&quot;article--full&quot; itemprop=&quot;blogPost&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/BlogPosting&quot; role=&quot;article&quot;&gt;
+	&lt;div class=&quot;article__meta&quot;&gt;
+		&lt;time datetime=&quot;2013-09-07&quot; itemprop=&quot;datePublished&quot;&gt;
+			September 07, 2013
+		&lt;/time&gt;
+	&lt;/div&gt;
+	&lt;h1 itemprop=&quot;name&quot;&gt;Some kind of workflow&lt;/h1&gt;
+	&lt;div class=&quot;article__body&quot; itemprop=&quot;description articleBody&quot;&gt;
+		&lt;p&gt;On sept 6th we had a little &lt;a href=&quot;http://wolfr.github.io/jekyll-camp/&quot;&gt;Jekyll meetup&lt;/a&gt; in Ghent and it was my very first presentation ever.&lt;/p&gt;
+		&lt;p&gt;The talk was about modern day front-end workflows with Jekyll, CSS and Grunt. View this presentation @ &lt;a href=&quot;http://bengie.github.io/some-kind-of-workflow&quot;&gt;http://bengie.github.io/some-kind-of-workflow&lt;/a&gt;. Requires a standards aware browser.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/article&gt;
+</description>
+        <pubDate>Sat, 07 Sep 2013 00:00:00 +0200</pubDate>
+        <link>http://diezjietal.be/blog/2013/09/07/some-kind-of-workflow.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2013/09/07/some-kind-of-workflow.html</guid>
+      </item>
+    
+      <item>
+        <title>Cameo in .net #245</title>
+        <description>&lt;p&gt;Early July, Ian Devlin &lt;a href=&quot;http://twitter.com/iandevlin&quot;&gt; @iandevlin&lt;/a&gt;, was looking for some examples of recently launched websites built with HTML5 to be featured in the magazine’s HTML5 gallery. I submitted &lt;a href=&quot;http://standaard.be&quot;&gt;de Standaard&lt;/a&gt;, a &lt;a href=&quot;/projects/2013/06/20/de-standaard.html&quot;&gt;project I worked on&lt;/a&gt;, and it got accepted. Yay, my five minutes of glory. Kudos to the talented &lt;a href=&quot;http://twitter.com/stevenbenisek&quot;&gt;@stevenbenisek&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/img/netmag.jpg&quot; alt=&quot;My cameo in .net&quot; itemprop=&quot;image&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;about-net&quot;&gt;About .net&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.netmagazine.com/&quot;&gt;.net&lt;/a&gt; is the world’s best-selling magazine for web designers and developers, featuring tutorials from leading agencies, interviews with the web’s biggest names, and agenda-setting features on the hottest issues affecting the internet today.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 14 Aug 2013 00:00:00 +0200</pubDate>
+        <link>http://diezjietal.be/blog/2013/08/14/netmag-cameo.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2013/08/14/netmag-cameo.html</guid>
+      </item>
+    
+      <item>
+        <title>Mobile First with Sass</title>
+        <description>&lt;h2 id=&quot;the-philosophy&quot;&gt;The philosophy&lt;/h2&gt;
+&lt;p&gt;A Mobile First approach is starting with a basic experience for mobile devices. The well known one-column stack, and with &lt;code&gt;@media&lt;/code&gt; queries you build new layouts for every breakpoint in your design. Devices, or browsers, that don’t understand &lt;code&gt;@media&lt;/code&gt; queries get the basic experience.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-pitfall&quot;&gt;The pitfall&lt;/h2&gt;
+
+&lt;p&gt;From a &lt;a href=&quot;/blog/2013/06/23/adaptive-web-design.html&quot;&gt;Progressive Enhancement point-of-view&lt;/a&gt; I find this an excellent approach. But this also means you will serve the one-column stack to those legacy desktop browsers (&amp;lt; IE9) who don’t understand &lt;code&gt;@media&lt;/code&gt; queries. Unfortunately that’s not something we can all get away with.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;Luckily we can fix this. With the help of &lt;a href=&quot;http://sass-lang.com&quot;&gt;Sass&lt;/a&gt; and some very clever &lt;a href=&quot;http://jakearchibald.github.io/sass-ie/&quot;&gt;SassScripting by Jake Archibald&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;These snippets will generate a legacy stylesheet that serves the desktop layout to &amp;lt;IE9. Yay!&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-you-start&quot;&gt;How do you start?&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add conditional comments to the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of your html file.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if lte IE 8]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;	&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;css/master-old-ie.css&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if gt IE 8]&amp;gt;&amp;lt;!--&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;css/master.css&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&amp;lt;![endif]--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a &lt;code&gt;.scss&lt;/code&gt; version of your legacy stylesheet. e.g. &lt;code&gt;master-old-ie.scss&lt;/code&gt; and add the following snippet.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// the breakpoint where the desktop layout starts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;master&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// import all other scss&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The next step will clarify the variables.&lt;/p&gt;
+
+&lt;p&gt;3.
+Add the following to your &lt;code&gt;_mixins.scss&lt;/code&gt; file, or create a new partial, but don’t forget to &lt;code&gt;@import&lt;/code&gt; it in your &lt;code&gt;master.scss&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// set a default value and override it in master-old-ie.scss&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// min-width media queries&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// if we want the media query fallback, and yes we do in our master-old-ie.scss&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// if the width value set in master-old-ie.scss is greater or equal to the width set in our mixin&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;// compile the content of our mixin WITHOUT the media query&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;@else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;// else compile content of mixin WITH media query&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// max-width media queries&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mq-max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// same logic as above&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fix-mqs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;@else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;An example&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; mq-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In &lt;code&gt;master.css&lt;/code&gt;, this will compile to …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;60em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And in &lt;code&gt;master-old-ie.css&lt;/code&gt; this will compile to …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hotpink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dodgerblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;firebrick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, it’s a little dirty to repeat the same property and let the cascade do the lifting but hey, it gets the job done.&lt;/p&gt;
+
+&lt;h2 id=&quot;bonus&quot;&gt;Bonus&lt;/h2&gt;
+
+&lt;p&gt;A little bonus mixin to compile CSS only for our &lt;code&gt;master-old-ie.css&lt;/code&gt; file. Use this if you don’t want to pollute your CSS with hacks.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// Only use this content if we&amp;#39;re dealing with old IE&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add to the top of &lt;code&gt;master-old-ie.scss&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$old-ie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n-Pseudo&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// BONUS: we want to include some CSS hacks only to this file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A little example …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// this will output/compile only in master-old-ie.scss (because we&amp;#39;ve set $old-ie: true; at top of page) and will target IE7 with the star hack&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; old-ie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;na&quot;&gt;*display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;na&quot;&gt;*zoom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Our &lt;code&gt;master.css&lt;/code&gt; will compile to …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;… and our&lt;code&gt;master-old-ie.css&lt;/code&gt; will compile to …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zoom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;heads-up&quot;&gt;Heads up!&lt;/h2&gt;
+
+&lt;p&gt;By using this approach (media queries per selector instead of one media query per breakpoint and all your selectors in that query) this will bloat your CSS output. But by &lt;a href=&quot;https://github.com/h5bp/server-configs/blob/master/apache/README.md#gzip-components&quot;&gt;gzipping&lt;/a&gt; your files the difference will be negligible.&lt;/p&gt;
+
+&lt;h2 id=&quot;credit-where-credits-due&quot;&gt;Credit where credit’s due&lt;/h2&gt;
+
+&lt;p&gt;I don’t want to take credit for this approach. All credits go to &lt;a href=&quot;http://jakearchibald.com/&quot;&gt;Jake Archibald&lt;/a&gt;. I just wanted to make a little tutorial for Sass beginners and share my workflow with others.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Jun 2013 00:00:00 +0200</pubDate>
+        <link>http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass.html</link>
+        <guid isPermaLink="true">http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass.html</guid>
+      </item>
+    
+  </channel>
+</rss>

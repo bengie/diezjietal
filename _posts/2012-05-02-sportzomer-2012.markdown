@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Sportzomer 2012"
+date:   2012-05-02
+categories: projects
+client: De Persgroep
+intro: "With the European Championship Football, the Tour de France and the Olympics, the summer of 2012 was a highlight for sports fanatics."
+---
+
+<figure class="span--third">
+	<img src="/img/sportzomer2012-1.jpg" alt="EC 2012" itemprop="image">
+</figure>
+
+
+The team from the [HLN.be Mobile app](https://itunes.apple.com/be/app/hln.be-mobile/id403025567?mt=8) and [HLN.be](http://hln.be) wanted a separate app, iOS and Android, for each event with news, calendars, results, rankings and live coverage. To speed up development they chose to build it with HTML and Java, and integrate it in the app with a webview.
+
+## Where did I fit in?
+
+First, I was assigned with making wireframes based on the sketches and briefs. When the designs were finished I started by building a miniature framework so all three events were based on the same HTML/CSS code base. The first event, EC 2012, was done by me entirely (for HTML, CSS and some jQuery) while my little framework was send to a third-party development team where they started working on The Olympics and <abbr title="Tour de France">TdF</abbr> app.
+
+### Event data
+
+All event data was pulled from the [Infostrada API](http://www.infostradasports.com).
+
+## Tools and technologies:
+
+HTML5, CSS3, jQuery, [Axure](http://www.axure.com/).
+

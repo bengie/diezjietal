@@ -1,0 +1,33 @@
+//
+// GRID
+//
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.row {
+	margin-bottom: $base-spacing-unit;
+
+	@include mq-min($bp1) {
+		@include clearfix;
+	}
+}
+
+.col {
+	@include mq-min($bp1) {
+		padding-right: $half-spacing-unit;
+		float: left;
+	}
+
+	&.omega {
+		@include mq-min($bp1) {
+			padding-right: 0;
+			padding-left: $half-spacing-unit;
+			float: right;
+		}
+	}
+
+	&--half {
+		@include mq-min($bp1) {
+			width: 50%;
+		}
+	}
+}

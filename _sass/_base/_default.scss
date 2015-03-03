@@ -1,0 +1,148 @@
+//
+// DEFAULT
+// =============================================================================
+// no classes here, only element selectors
+//
+
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-family: $merriweather;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	color: $body-color;
+	background-color: $white;
+
+	@include mq-min($bp1) {
+		font-size: $base-font-size * 1.25;
+	}
+}
+
+figure {
+	display: block;
+	margin: 0;
+
+	> a {
+		display: block;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+figcaption {
+	margin-top: $half-spacing-unit;
+	color: $aluminum;
+	font-family: $lato;
+	font-size: $small-size;
+}
+
+a {
+	@include adjust-link-color($link-color, $hover-color, $visited-color, true);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $lato;
+	font-weight: 900;
+	line-height: 1.2;
+	margin: 1em 0 .5em;
+}
+
+h1 {
+	font-size: $h1-size;
+}
+
+h2 {
+	font-size: $h2-size;
+}
+
+h3 {
+	font-size: $h3-size
+}
+
+h4 {
+	font-size: $h4-size;
+}
+
+h5 {
+	font-size: $h5-size;
+}
+
+h6 {
+	font-size: $h6-size;
+}
+
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code {
+	padding: 2px 4px;
+	color: #3d9970; // olive
+	font-size: 90%;
+	background-color: rgba(#3d9970, .1);
+
+	pre > & {
+		padding: 0;
+		color: #7a7a7a;
+		font-size: inherit;
+		background-color: transparent;
+	}
+}
+
+pre {
+	padding: 1.125em;
+	font-size: 1.125rem;
+	line-height: 1.11;
+	overflow-x: scroll;
+	margin-bottom: .88em;
+	tab-size: 2;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	// border-left: 5px solid #7a7a7a;
+
+	cite {
+		font-size: .85em;
+		color: $aluminum;
+
+		&:before {
+			content: '\2014'; // em dash
+		}
+	}
+}
+
+cite {
+	font-family: $lato;
+	font-size: $h6-size;
+	font-style: italic;
+	// background-color: #fff;
+	// border-color: transparent;
+}

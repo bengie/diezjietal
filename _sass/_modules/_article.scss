@@ -1,0 +1,56 @@
+// =============================================================================
+// ARTICLES
+//
+// =============================================================================
+
+.article {
+	margin-bottom: $double-spacing-unit;
+
+	&__subtitle {
+		//
+	}
+
+	&__header {
+		margin-bottom: $double-spacing-unit;
+	}
+
+	&__title {
+		.article__subtitle + & {
+			margin-top: 0;
+		}
+	}
+
+	&__meta {
+		display: block;
+		color: #7a7a7a;
+		font-size: 1em;
+		font-style: italic;
+
+		&:last-of-type {
+			font-size: $tiny-size;
+		}
+	}
+
+	&__intro {
+		font-size: $h6-size;
+		font-style: italic;
+	}
+
+	a {
+		@include adjust-link-color($link-color, $hover-color, $visited-color);
+		border-bottom: 1px dotted $link-color;
+
+		&:visited {
+			border-bottom: 1px dotted $visited-color;
+		}
+
+		&:focus,
+		&:hover {
+			border-bottom: 1px dotted $hover-color;
+		}
+	}
+
+	p {
+		line-height: 1.8;
+	}
+}

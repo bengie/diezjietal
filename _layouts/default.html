@@ -1,12 +1,17 @@
+<!DOCTYPE html>
+<html itemtype="http://schema.org/Blog" itemscope class="no-js">
 {% include head.html %}
-{% include header.html %}
-	<div class="primary" role="main">
-		<div class="container">
-			{{ content }}
+<body{% if site.animated %} class="animated fade-in-down"{% endif %}>
+	<section class="wrapper">
+		{% include header.html %}
+
+		<div class="main-content" role="main">
+			<div class="container">
+				{{ content }}
+			</div>
 		</div>
-	</div>
+	</section>
+
 	{% include footer.html %}
-	{% include scripts.html %}
-	{% include analytics.html %}
 </body>
 </html>

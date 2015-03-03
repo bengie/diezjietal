@@ -1,0 +1,64 @@
+//
+// LISTS
+//
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.social-icons {
+	@extend %unstyled-list;
+	margin-top: $base-spacing-unit;
+	margin-bottom: $base-spacing-unit;
+}
+
+.social__item {
+	display: inline-block;
+	margin-right: $half-spacing-unit/2;
+	margin-left: $half-spacing-unit/2;
+}
+
+.social__link {
+	// font-size: $tiny-size;
+	border-bottom: 0;
+
+	&:visited,
+	&:focus,
+	&:hover {
+		border-bottom: 0;
+	}
+}
+
+.posts-list {
+	@extend %unstyled-list;
+
+	&__item {
+		display: block;
+		margin-bottom: $double-spacing-unit;
+		padding-bottom: $base-spacing-unit;
+		border-bottom: 1px solid $border-color;
+
+		&:last-of-type {
+			border-bottom: 0;
+		}
+	}
+
+	&__link {
+		@include adjust-link-color($body-color, $link-color, null);
+		display: block;
+		border-bottom: 0;
+		-webkit-transition: color .2s ease-in-out;
+		transition: color .5s ease-in-out;
+	}
+
+	&__meta {
+		margin-top: 0;
+		color: #7a7a7a;
+		font-style: italic;
+	}
+
+	&__title {
+		margin: .5em 0;
+	}
+
+	&__summary {
+		color: $body-color;
+	}
+}

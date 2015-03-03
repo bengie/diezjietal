@@ -1,21 +1,19 @@
 {
-  "name": "diezjietal",
-  "version": "0.1.0",
-  "url": "http://diezjietal.be",
+  "name": "bengie.be",
+  "version": "1.0.0",
+  "description": "[pixyll.com](http://www.pixyll.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "Gregory Van Looy",
+  "license": "ISC",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-bg-shell": "~2.0.1",
-    "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-compass": "~0.2.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-livereload": "~0.1.2",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-sass": "^0.8.1",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-watch": "~0.4.4",
-    "grunt-imageoptim": "~1.2.6",
-    "grunt-jekyll": "~0.3.6"
+    "gulp": "^3.8.11",
+    "gulp-imagemin": "^2.2.0",
+    "gulp-smushit": "0.0.4"
+  },
+  "dependencies": {
+    "imagemin-pngquant": "^4.0.0"
   }
 }

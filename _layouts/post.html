@@ -1,13 +1,72 @@
-{% include head.html %}
-{% include header.html %}
-	<div class="primary" role="main">
-		<div class="container">
-			{{ content }}
-		</div>
+---
+layout: default
+---
+
+{% assign minutes = content | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}
+{% assign minutes = 1 %}
+{% endif %}
+
+<article class="article" role="article" itemtype="http://schema.org/BlogPosting" itemscope itemprop="blogPost">
+	<header class="article__header">
+		{% if page.client %}
+			<div class="article__subtitle">Client: {{page.client}}</div>
+		{% endif %}
+		<h1 class="article__title" itemprop="headline">{{ page.title }}</h1>
+		<span class="article__meta" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</span>
+		{% if page.update_date %}
+			<span class="article__meta" itemprop="dateModified">Updated: {{ page.update_date | date: "%b %-d, %Y" }}</span>
+		{% endif %}
+		<span class="article__meta">
+		{% if page.minutes %}
+			{{ page.minutes }} minute read
+		{% else %}
+			{{ minutes }} minute read
+		{% endif %}
+		</span>
+	</header>
+
+	<div class="article__body" itemprop="articleBody">
+		{% if page.intro %}
+			<p class="article__intro">{{ page.intro }}</p>
+		{% endif %}
+
+		{{ content }}
 	</div>
-	{% include footer.html %}
-	{% include banner.html %}
-	{% include scripts.html %}
-	{% include analytics.html %}
-</body>
-</html>
+
+	{% if site.show_post_footers %}
+		{% include post_footer.html %}
+	{% endif %}
+
+</article>
+
+
+{% if site.disqus_shortname %}
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+		var disqus_shortname  = '{{ site.disqus_shortname }}';
+
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
+
+{% if site.show_related_posts %}
+	<aside class="article-aside">
+		<h3 class="related-post-title">Related Posts</h3>
+		<ul class="block-list">
+			{% for post in site.related_posts %}
+				<li class="block__item">
+					<a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
+						<h4 class="post-title">{{ post.title }}</h4>
+						<p class="post-summary">{{ post.summary }}</p>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</aside>
+{% endif %}

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html itemtype="http://schema.org/Blog" itemscope class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mobile First with Sass &#8211; Diezjietal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Diezjietal is a freelance html and css architect and consultant">
+	<meta name="author" content="Gregory Van Looy">
+	<meta name="keywords" content="blog">
+	<link rel="canonical" href="http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass.html">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="/css/main.css?201503031559" type="text/css">
+
+	<!-- Fonts -->
+	<link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+	
+	  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+
+	<script src="/js/vendors/modernizr.min.js"></script>
+
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Mobile First with Sass">
+	<meta property="og:description" content="Diezjietal is a freelance html and css architect and consultant">
+	<meta property="og:url" content="http://diezjietal.be/blog/2013/06/29/mobile-first-with-Sass.html">
+	<meta property="og:site_name" content="Diezjietal">
+	
+	<meta property="article:author" content="https://www.facebook.com/gregory.vanlooy">
+	
+	<meta property="article:section" content="blog">
+	
+	
+	<meta property="article:published_time" content="2013-06-29 00:00:00 +0200">
+	
+
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+</head>
+
+<body>
+	<section class="wrapper">
+		<header class="page-header" role="banner">
+	<div class="container">
+		<nav class="nav primary-nav" role="navigation" itemtype="http://schema.org/SiteNavigationElement" itemscope>
+	<ol class="nav__list">
+		<li class="nav__item first">
+			<a href="/" class="nav__link" itemscope itemtype="http://schema.org/Organization" itemprop="url">Diezjietal</a>
+		</li>
+		<li class="nav__item">
+			<a href="/projects/" class="nav__link" itemprop="url">Projects</a>
+		</li>
+		<li class="nav__item">
+			<a href="/blog/" class="nav__link" itemprop="url">Blog</a>
+		</li>
+		<li class="nav__item">
+			<a href="/about/" class="nav__link" itemprop="url">About</a>
+		</li>
+		
+	</ol>
+</nav>
+
+	</div>
+</header>
+
+
+		<div class="main-content" role="main">
+			<div class="container">
+				
+
+
+<article class="article" role="article" itemtype="http://schema.org/BlogPosting" itemscope itemprop="blogPost">
+	<header class="article__header">
+		
+		<h1 class="article__title" itemprop="headline">Mobile First with Sass</h1>
+		<span class="article__meta" itemprop="datePublished">Jun 29, 2013</span>
+		
+		<span class="article__meta">
+		
+			5 minute read
+		
+		</span>
+	</header>
+
+	<div class="article__body" itemprop="articleBody">
+		
+			<p class="article__intro">Taking a Mobile First approach with your CSS and keeping &lt;IE9 happy</p>
+		
+
+		<h2 id="the-philosophy">The philosophy</h2>
+<p>A Mobile First approach is starting with a basic experience for mobile devices. The well known one-column stack, and with <code>@media</code> queries you build new layouts for every breakpoint in your design. Devices, or browsers, that don’t understand <code>@media</code> queries get the basic experience.</p>
+
+<h2 id="the-pitfall">The pitfall</h2>
+
+<p>From a <a href="/blog/2013/06/23/adaptive-web-design.html">Progressive Enhancement point-of-view</a> I find this an excellent approach. But this also means you will serve the one-column stack to those legacy desktop browsers (&lt; IE9) who don’t understand <code>@media</code> queries. Unfortunately that’s not something we can all get away with.</p>
+
+<h2 id="the-solution">The solution</h2>
+
+<p>Luckily we can fix this. With the help of <a href="http://sass-lang.com">Sass</a> and some very clever <a href="http://jakearchibald.github.io/sass-ie/">SassScripting by Jake Archibald</a>.</p>
+
+<p>These snippets will generate a legacy stylesheet that serves the desktop layout to &lt;IE9. Yay!</p>
+
+<h2 id="how-do-you-start">How do you start?</h2>
+
+<ol>
+  <li>Add conditional comments to the <code>&lt;head&gt;</code> of your html file.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--[if lte IE 8]&gt;</span>
+<span class="c">	&lt;link rel=&quot;stylesheet&quot; href=&quot;css/master-old-ie.css&quot;&gt;</span>
+<span class="c">&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span>
+	<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/master.css&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!--&lt;![endif]--&gt;</span></code></pre></div>
+
+<ol>
+  <li>Create a <code>.scss</code> version of your legacy stylesheet. e.g. <code>master-old-ie.scss</code> and add the following snippet.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$fix-mqs</span><span class="o">:</span> <span class="mi">60</span><span class="kt">em</span><span class="p">;</span> <span class="c1">// the breakpoint where the desktop layout starts</span>
+<span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">master&#39;</span><span class="p">;</span> <span class="c1">// import all other scss</span></code></pre></div>
+
+<p>The next step will clarify the variables.</p>
+
+<p>3.
+Add the following to your <code>_mixins.scss</code> file, or create a new partial, but don’t forget to <code>@import</code> it in your <code>master.scss</code> file.</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$fix-mqs</span><span class="o">:</span> <span class="n-Pseudo">false</span> <span class="nv">!default</span><span class="p">;</span> <span class="c1">// set a default value and override it in master-old-ie.scss</span>
+
+<span class="c1">// min-width media queries</span>
+<span class="k">@mixin</span><span class="nf"> mq-min</span><span class="p">(</span><span class="nv">$width</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// if we want the media query fallback, and yes we do in our master-old-ie.scss</span>
+	<span class="k">@if</span> <span class="nv">$fix-mqs</span> <span class="p">{</span>
+		<span class="c1">// if the width value set in master-old-ie.scss is greater or equal to the width set in our mixin</span>
+		<span class="k">@if</span> <span class="nv">$fix-mqs</span> <span class="o">&gt;=</span> <span class="nv">$width</span> <span class="p">{</span>
+			<span class="c1">// compile the content of our mixin WITHOUT the media query</span>
+			<span class="k">@content</span><span class="o">;</span>
+		<span class="p">}</span>
+		<span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+			<span class="c1">// else compile content of mixin WITH media query</span>
+			<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">width</span><span class="o">)</span> <span class="p">{</span>
+		<span class="k">@content</span><span class="o">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// max-width media queries</span>
+<span class="k">@mixin</span><span class="nf"> mq-max</span><span class="p">(</span><span class="nv">$width</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">@if</span> <span class="nv">$fix-mqs</span> <span class="p">{</span>
+		<span class="c1">// same logic as above</span>
+		<span class="k">@if</span> <span class="nv">$fix-mqs</span> <span class="o">&lt;=</span> <span class="nv">$width</span> <span class="p">{</span>
+			<span class="k">@content</span><span class="o">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+		<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">width</span><span class="o">)</span> <span class="p">{</span>
+			<span class="k">@content</span><span class="o">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<ol>
+  <li>An example</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.container</span> <span class="p">{</span>
+	<span class="na">background-color</span><span class="o">:</span> <span class="ni">hotpink</span><span class="p">;</span>
+	<span class="k">@include</span><span class="nd"> mq-min</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span><span class="p">)</span> <span class="p">{</span>
+		<span class="na">background-color</span><span class="o">:</span> <span class="ni">dodgerblue</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">@include</span><span class="nd"> mq-min</span><span class="p">(</span><span class="mi">60</span><span class="kt">em</span><span class="p">)</span> <span class="p">{</span>
+		<span class="na">background-color</span><span class="o">:</span> <span class="ni">firebrick</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>In <code>master.css</code>, this will compile to …</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span> <span class="p">{</span>
+	<span class="k">background-color</span><span class="o">:</span> <span class="nb">hotpink</span><span class="p">;</span>
+	<span class="o">@</span><span class="n">media</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="k">min-width</span><span class="o">:</span> <span class="m">30em</span><span class="p">)</span> <span class="err">{</span>
+		<span class="k">background-color</span><span class="o">:</span> <span class="nb">dodgerblue</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">60em</span><span class="o">)</span> <span class="p">{</span>
+		<span class="nt">background-color</span><span class="o">:</span> <span class="nt">firebrick</span><span class="o">;</span>
+	<span class="p">}</span>
+<span class="err">}</span></code></pre></div>
+
+<p>And in <code>master-old-ie.css</code> this will compile to …</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span> <span class="p">{</span>
+	<span class="k">background-color</span><span class="o">:</span> <span class="nb">hotpink</span><span class="p">;</span>
+	<span class="k">background-color</span><span class="o">:</span> <span class="nb">dodgerblue</span><span class="p">;</span>
+	<span class="k">background-color</span><span class="o">:</span> <span class="nb">firebrick</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Okay, it’s a little dirty to repeat the same property and let the cascade do the lifting but hey, it gets the job done.</p>
+
+<h2 id="bonus">Bonus</h2>
+
+<p>A little bonus mixin to compile CSS only for our <code>master-old-ie.css</code> file. Use this if you don’t want to pollute your CSS with hacks.</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$old-ie</span><span class="o">:</span> <span class="n-Pseudo">false</span> <span class="nv">!default</span><span class="p">;</span>
+
+<span class="k">@mixin</span><span class="nf"> old-ie</span> <span class="p">{</span>
+	<span class="c1">// Only use this content if we&#39;re dealing with old IE</span>
+	<span class="k">@if</span> <span class="nv">$old-ie</span> <span class="p">{</span>
+		<span class="k">@content</span><span class="o">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Add to the top of <code>master-old-ie.scss</code></p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$old-ie</span><span class="o">:</span> <span class="n-Pseudo">true</span><span class="p">;</span> <span class="c1">// BONUS: we want to include some CSS hacks only to this file</span></code></pre></div>
+
+<p>A little example …</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.selector</span> <span class="p">{</span>
+	<span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+	<span class="c1">// this will output/compile only in master-old-ie.scss (because we&#39;ve set $old-ie: true; at top of page) and will target IE7 with the star hack</span>
+	<span class="k">@include</span><span class="nd"> old-ie</span> <span class="p">{</span>
+		<span class="na">*display</span><span class="o">:</span> <span class="no">inline</span><span class="p">;</span>
+		<span class="na">*zoom</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Our <code>master.css</code> will compile to …</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.selector</span> <span class="p">{</span>
+	<span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>… and our<code>master-old-ie.css</code> will compile to …</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.selector</span> <span class="p">{</span>
+	<span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+	<span class="o">*</span><span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
+	<span class="o">*</span><span class="n">zoom</span><span class="o">:</span><span class="m">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<h2 id="heads-up">Heads up!</h2>
+
+<p>By using this approach (media queries per selector instead of one media query per breakpoint and all your selectors in that query) this will bloat your CSS output. But by <a href="https://github.com/h5bp/server-configs/blob/master/apache/README.md#gzip-components">gzipping</a> your files the difference will be negligible.</p>
+
+<h2 id="credit-where-credits-due">Credit where credit’s due</h2>
+
+<p>I don’t want to take credit for this approach. All credits go to <a href="http://jakearchibald.com/">Jake Archibald</a>. I just wanted to make a little tutorial for Sass beginners and share my workflow with others.</p>
+
+	</div>
+
+	
+
+</article>
+
+
+
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+		var disqus_shortname  = 'dzjtl';
+
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+			</div>
+		</div>
+	</section>
+
+	<footer class="page-footer" role="contentinfo">
+	<div class="container">
+		<small>&copy; diezjietal.be</small>
+		
+			<ul class="social-icons">
+	
+		<li class="social__item">
+			<a class="social__link" href="https://github.com/bengie">
+				<span class="fa fa-github"></span>
+			</a>
+		</li>
+	
+	
+		<li class="social__item">
+			<a class="social__link" href="/feed.xml">
+				<span class="fa fa-rss"></span>
+			</a>
+		</li>
+	
+		<li class="social__item">
+			<a class="social__link" href="https://twitter.com/bengie">
+				<span class="fa fa-twitter"></span>
+			</a>
+		</li>
+	
+	
+	
+		<li class="social__item">
+			<a class="social__link" href="https://instagram.com/bengie">
+				<span class="fa fa-instagram"></span>
+			</a>
+		</li>
+	
+	
+		<li class="social__item">
+			<a class="social__link" href="mailto:greg@diezjietal.be">
+				<span class="fa fa-envelope"></span>
+			</a>
+		</li>
+	
+	
+	
+	
+		<li class="social__item">
+			<a class="social__link" href="https://www.linkedin.com/in/diezjietal">
+				<span class="fa fa-linkedin"></span>
+			</a>
+		</li>
+	
+
+	
+	
+	
+</ul>
+
+		
+	</div>
+</footer>
+
+
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-7640477-2', 'auto');
+	ga('send', 'pageview');
+
+	</script>
+
+
+</body>
+</html>

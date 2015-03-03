@@ -1,0 +1,46 @@
+//
+// LAYOUTS
+//
+// all sections and layout elements
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.wrapper {
+	min-height: 100%;
+	margin-bottom: -$footer-height;
+	padding-right: $base-spacing-unit;
+	padding-left: $base-spacing-unit;
+
+	&:after {
+		display: block;
+		height: $footer-height;
+		content: '';
+	}
+}
+
+.container {
+	max-width: 768px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.page-header {
+	padding-top: $base-spacing-unit;
+	padding-bottom: $double-spacing-unit;
+
+	@include mq-min($bp1) {
+		padding-top: $double-spacing-unit;
+		padding-bottom: $double-spacing-unit*2;
+	}
+}
+
+.page-footer {
+	height: $footer-height;
+	padding-right: $base-spacing-unit;
+	padding-left: $base-spacing-unit;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: $lato;
+	font-weight: 300;
+	padding: 1em;
+	border-top: 1px solid #f3f3f3;
+	text-align: center;
+}

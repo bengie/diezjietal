@@ -1,0 +1,80 @@
+<ul class="social-icons">
+	{% if site.github_username %}
+		<li class="social__item">
+			<a class="social__link" href="https://github.com/{{ site.github_username }}">
+				<span class="fa fa-github"></span>
+			</a>
+		</li>
+	{% endif %}
+	{% if site.stackoverflow_id %}
+		<li class="social__item">
+			<a class="social__link" href="https://stackoverflow.com/users/{{ site.stackoverflow_id }}">
+				<span class="fa fa-stack-overflow"></span>
+			</a>
+		</li>
+	{% endif %}
+		<li class="social__item">
+			<a class="social__link" href="{{ "/feed.xml" | prepend: site.baseurl }}">
+				<span class="fa fa-rss"></span>
+			</a>
+		</li>
+	{% if site.twitter_username %}
+		<li class="social__item">
+			<a class="social__link" href="https://twitter.com/{{ site.twitter_username }}">
+				<span class="fa fa-twitter"></span>
+			</a>
+		</li>
+	{% endif %}
+	{% if site.google_plus_id %}
+		<li class="social__item">
+			<a class="social__link" href="https://plus.google.com/{{ site.google_plus_id }}/posts">
+				<span class="fa fa-google-plus"></span>
+			</a>
+		</li>
+	{% endif %}
+	{% if site.instagram_id %}
+		<li class="social__item">
+			<a class="social__link" href="https://instagram.com/{{ site.instagram_id }}">
+				<span class="fa fa-instagram"></span>
+			</a>
+		</li>
+	{% endif %}
+	{% if site.email %}
+		<li class="social__item">
+			<a class="social__link" href="mailto:{{ site.email }}">
+				<span class="fa fa-envelope"></span>
+			</a>
+		</li>
+	{% endif %}
+	{% if site.strava_id %}
+		<li class="social__item">
+			<a class="social__link" href="https://www.strava.com/athletes/{{ site.strava_id }}">Strava</a>
+		</li>
+	{% endif %}
+	{% if site.garmin_connect_id %}
+		<li class="social__item">
+			<a class="social__link" href="https://connect.garmin.com/profile/{{ site.garmin_connect_id }}">Garmin Connect</a>
+		</li>
+	{% endif %}
+	{% if site.linkedin_username %}
+		<li class="social__item">
+			<a class="social__link" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+				<span class="fa fa-linkedin"></span>
+			</a>
+		</li>
+	{% endif %}
+
+	{% if site.bitcoin_url %}
+		<li class="social__item">
+			<a class="fa fa-bitcoin" href="{{ site.bitcoin_url }}"></a>
+		</li>
+	{% endif %}
+	{% if site.paypal_url %}
+		<li class="social__item">
+			<a class="fa fa-paypal" href="{{ site.paypal_url }}"></a>
+		</li>
+	{% endif %}
+	{% if site.flattr_button %}
+		{{ site.flattr_button }}
+	{% endif %}
+</ul>

@@ -1,0 +1,163 @@
+// =============================================================================
+// CUSTOM FUNCTIONS
+// =============================================================================
+// =============================================================================
+// LINK COLOR
+// =============================================================================
+@mixin adjust-link-color($color: $link-color, $hoverColor: $hover-color, $visitedColor: $visited-color, $textDecoration1: false, $textDecoration2: false, $important: '') {
+	// a11y: links should be underlined by default but in our case that's only in full articles so we add it there
+	// the order of the :pseudo-classes is important for a11y
+
+	text-decoration: none;
+
+	@if $textDecoration1 == true {
+		border-bottom: 1px dotted $color;
+	}
+
+	// we no longer use :link
+	color: $color #{$important};
+
+	&:visited { // UX: visual feedback that you've visited this link before
+		@if $visitedColor != null {
+			color: $visitedColor #{$important};
+		} @else {
+			color: $color #{$important};
+		}
+
+		@if $textDecoration1 == true {
+			border-bottom-color: $visitedColor;
+		}
+	}
+
+	&:focus,
+	&:hover {
+		color: $hoverColor #{$important};
+
+		@if $textDecoration1 == true {
+			border-bottom-color: $hoverColor;
+		}
+	}
+
+	@content;
+}
+
+@mixin link-behaviour($textdecoration-link: true, $textdecoration-hover: true) {
+
+	&,
+	&:visited {
+		@if $textdecoration-link == false {
+			text-decoration: none;
+		}
+	}
+
+	&:focus,
+	&:hover {
+		@if $textdecoration-hover == false {
+			text-decoration: none;
+		}
+	}
+}
+// =============================================================================
+// We use this to do clear floats (http://foundation.zurb.com/docs/components/global.html)
+// =============================================================================
+
+@mixin clearfix {
+
+	&:before,
+	&:after {
+		display: table;
+		content: ' ';
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+// =============================================================================
+// BOX-SIZING
+// =============================================================================
+// http://compass-style.org/reference/compass/css3/box_sizing/
+@mixin box-sizing($bs) {
+	$bs: unquote($bs);
+
+	@if type-of($bs) == string {
+		-moz-box-sizing: $bs;
+		-webkit-box-sizing: $bs;
+		box-sizing: $bs;
+	}
+}
+
+// =============================================================================
+// strip units from variable
+// http://stackoverflow.com/questions/12328259/how-do-you-strip-the-unit-from-any-number-in-sass
+// =============================================================================
+@function strip-units($number) {
+	@return $number / ($number * 0 + 1);
+}
+
+// =============================================================================
+// MOBILE FIRST MEDIA QUERIES WITH <IE9 fallback
+// =============================================================================
+
+// @see https://github.com/jakearchibald/sass-ie
+$fix-mqs: false !default;
+
+// min width query
+@mixin mq-min($width) {
+	@if $fix-mqs {
+		@if $fix-mqs >= $width {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $width) {
+			@content;
+		}
+	}
+}
+// max width query
+@mixin mq-max($width) {
+	@if $fix-mqs {
+		@if $fix-mqs <= ($width - 1) {
+			@content;
+		}
+	} @else {
+		@media screen and (max-width: ($width - 1)) {
+			@content;
+		}
+	}
+}
+// single breakpoint query
+@mixin mq($width) {
+	@if $fix-mqs {
+		@if $fix-mqs <= $width {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $width) and (max-width: next-bp($width)) {
+			@content;
+		}
+	}
+}
+
+// calculate next breakpoint
+@function next-bp($width) {
+	@if $width == $bp1 {
+		@return $bp2 - 1;
+	} @else {
+		@warn 'Invalid breakpoint';
+	}
+}
+
+// =============================================================================
+// RETINA
+// =============================================================================
+// Include Google Nexus 7 with it’s 1.3 pixel ratio as a retina-capable device
+// @see http://bjango.com/articles/min-device-pixel-ratio
+// Simplified query
+// @see http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
+@mixin hidpi($ratio: 1.3) {
+	@media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+	only screen and (min-resolution: #{round($ratio*96)}dpi) {
+		@content;
+	}
+}

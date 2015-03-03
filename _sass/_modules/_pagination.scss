@@ -1,0 +1,38 @@
+// =============================================================================
+// PAGINATION
+//
+// =============================================================================
+
+.pagination {
+	font-family: $lato;
+	font-size: $tiny-size;
+	margin-bottom: $double-spacing-unit;
+}
+
+.pagination__list {
+	@extend %unstyled-list;
+	@include clearfix;
+}
+
+.pagination__item {
+	display: block;
+
+	&--prev {
+		float: left;
+	}
+
+	&--next {
+		float: right;
+	}
+}
+
+.pagination__dummy,
+.pagination__link {
+	display: block;
+	padding: 1em 1.5em;
+	border: 1px solid #f3f3f3;
+	border-radius: .1875em;
+	background-color: #fafafa;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}

@@ -1,0 +1,37 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+{% comment %}
+<section>
+	<ul class="archive-list">
+	{% for post in site.categories.projects %}
+		<li>
+			<article class="article--teaser" itemscope itemtype="http://schema.org/TechArticle" role="article">
+				<div class="article__meta">
+					<time datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished">
+						{{post.date | date: "%B %d, %Y"}}
+					</time>
+				</div>
+				<div class="article__body" itemprop="articleBody">
+					<a href="{{ post.url }}" itemprop="url name">{{ post.title }}</a>
+				</div>
+			</article>
+		</li>
+	{% endfor %}
+	</ul>
+</section>
+{% endcomment %}
+
+<ol class="posts-list" itemprop="blogPosts">
+	{% for post in site.categories.projects %}
+		<li class="posts-list__item">
+			<a href="{{ post.url | prepend: site.baseurl }}" class="posts-list__link">
+				<p class="posts-list__meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+				<h2 class="posts-list__title">{{ post.title }}</h2>
+				<p class="posts-list__summary">{{ post.summary }}</p>
+			</a>
+		</li>
+	{% endfor %}
+</ol>

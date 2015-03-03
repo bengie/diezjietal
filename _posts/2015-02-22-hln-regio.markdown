@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "HLN Regio"
+date:   2015-02-22
+client: De Persgroep
+categories: projects
+---
+
+<figure>
+	<img src="/img/hln-regio.png" alt="">
+</figure>
+
+My second project for De Persgroep publishing was a spin-off site of the current [HLN.be](http://hln.be) site. Filled with regional news and content uploaded by its users (UGC = User Generated Content). For the first release it was never the intention to make it responsive. This probably will be for a later phase. The way we built this site allows for for a minimum of effort to make it responsive.
+
+### CSS
+
+Our CSS approach is a combination of a modular architecture with [Smacss](https://smacss.com/), [Sass](http://sass-lang.com/) and [BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+
+
+
+{% highlight scss %}
+@charset "UTF-8";
+// DO NOT REMOVE the @charset
+// old Firefox needs this
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// MAIN.SCSS
+//
+// import all partials here
+//
+////////////////////////////////////////////////////////////////////////////////
+
+//  We use the SMACSS approach
+// SMACSS = Scalable and Modular Architecture for CSS
+// http://smacss.com/
+// At the very core of SMACSS is categorization.
+// By categorizing CSS rules, we begin to see patterns and can define better practices around each of these patterns.
+// There are five types of categories:
+// 1. Base
+// 2. Layout
+// 3. Module
+// 4. State
+// 5. Theme
+
+@import 'site-settings';
+@import 'mixins';
+@import 'base/base';
+@import 'layout/layout';
+@import 'modules/modules';
+@import 'states/states';
+@import 'theme/theme';
+{% endhighlight %}
+
+### Javascript
+
+"F*$k jQuery" is our motto. Not that we don't like [jQuery](http://jquery.com/), we just think it bloats our codebase because a lot of what it contains we don't use at all and because of all the custom development we have to do. We use microframeworks like [Bonzo](https://github.com/ded/bonzo) and [Qwery](https://github.com/ded/qwery) to handle any cross-browser issues and to simplify the way we write JS. We already have our own custom library which we can use across various projects.

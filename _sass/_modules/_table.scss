@@ -1,0 +1,26 @@
+//
+// TABLES
+//
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.table {
+	width: 100%;
+	margin-bottom: $base-spacing-unit;
+	border-collapse: collapse;
+
+	td {
+		font-family: $lato;
+
+		&[scope='row'] {
+			font-weight: 900;
+		}
+	}
+}
+
+.table--bordered {
+	th,
+	td {
+		padding: $half-spacing-unit;
+		border: 1px solid $border-color;
+	}
+}

@@ -1,0 +1,82 @@
+// =============================================================================
+// NAV
+//
+// =============================================================================
+
+.nav {
+	//
+}
+
+.nav__list {
+	@extend %unstyled-list;
+	text-align: center;
+
+	@include mq-min($bp1) {
+		@include clearfix;
+		text-align: right;
+	}
+}
+
+.nav__item {
+	display: block;
+	margin-bottom: $base-spacing-unit;
+	font-size: $h6-size;
+
+	@include mq-min($bp1) {
+		margin-top: 11px;
+		margin-bottom: 0;
+		margin-left: $half-spacing-unit;
+		display: inline-block;
+		font-size: $default-size;
+	}
+
+	// the logo
+	&.first {
+		font-size: $h4-size;
+		@include mq-min($bp1) {
+			margin-top: 0;
+			margin-left: 0;
+			font-size: $h5-size;
+			float: left;
+		}
+	}
+}
+
+.nav__link {
+	display: block;
+	color: $steel;
+	border-bottom: 0;
+
+	@include mq-min($bp1) {
+		border-bottom: 2px solid transparent;
+	}
+
+	&:focus,
+	&:hover {
+		color: $dark-gray;
+
+		@include mq-min($bp1) {
+			border-bottom-color: $dark-gray;
+		}
+	}
+
+	&:visited {
+		color: $steel;
+	}
+
+	.first > & {
+		color: $body-color;
+
+		&:focus,
+		&:hover {
+			@include mq-min($bp1) {
+				border-bottom-color: transparent;
+
+			}
+		}
+
+		&:visited {
+			color: $body-color;
+		}
+	}
+}
